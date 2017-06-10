@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ru.sccraft.arenacontrol.PlayerActivity">
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"></com.google.android.gms.ads.AdView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/adView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
+
+            <EditText
+                android:id="@+id/player_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/player_message" />
+
+            <Button
+                android:id="@+id/player_kick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kick"
+                android:onClick="kick"/>
+
+            <Button
+                android:id="@+id/player_ban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ban"
+                android:onClick="ban"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/player_op"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="OP"
+                    android:onClick="op"/>
+
+                <Button
+                    android:id="@+id/player_deop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="deOP"
+                    android:onClick="deOP"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/player_kill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/player_kill"
+                android:onClick="kill"/>
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

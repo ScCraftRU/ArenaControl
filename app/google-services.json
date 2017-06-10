@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "904156531319",
+    "firebase_url": "https://arenacontrol-b760b.firebaseio.com",
+    "project_id": "arenacontrol-b760b",
+    "storage_bucket": "arenacontrol-b760b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904156531319:android:5ec115722ba4a3b3",
+        "android_client_info": {
+          "package_name": "ru.sccraft.arenacontrol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904156531319-usqcojn6mrlmietm2nuttq1uofgmfo29.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.sccraft.arenacontrol",
+            "certificate_hash": "77352d8439c4518320a1e7f514c982f0e8c36086"
+          }
+        },
+        {
+          "client_id": "904156531319-d2k4pvtspior27hq4qgst0idr42tt6qt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgT2a5FI1iFMYeMyoqHzN5WQVQZ-whHU0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904156531319-d2k4pvtspior27hq4qgst0idr42tt6qt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

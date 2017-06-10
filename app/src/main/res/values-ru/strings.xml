@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ArenaControl</string>
+    <string name="serverActivity_name">"Название: "</string>
+    <string name="action_settings">Настройки</string>
+    <string name="serverActivity_info">Информация</string>
+    <string name="serverActivity_players">ИГРОКИ</string>
+    <string name="serverActivity_resources">РЕСУРСЫ</string>
+    <string name="action_update">Обновить</string>
+    <string name="action_remove">Удалить</string>
+    <string name="title_activity_server_add">Добавить сервер</string>
+    <string name="addServerActivity_token">API токен</string>
+    <string name="addServerActivity_name">Название</string>
+    <string name="save">Сохранить</string>
+
+    <string-array name="statusArray">
+        <item>Сервер выключен</item>
+        <item>Работает</item>
+        <item>Запускается…</item>
+    </string-array>
+    <string name="serverActivity_status">"Статус: "</string>
+    <string name="res_players">Игроки</string>
+    <string name="res_cpu">ЦПУ</string>
+    <string name="res_ram">ОЗУ</string>
+    <string name="res_hdd">Диск</string>
+    <string name="error">Ошибка</string>
+    <string name="title_activity_console">Консоль</string>
+    <string name="server_game">"Игра: "</string>
+    <string name="server_version">"Версия игры: "</string>
+    <string name="server_plugins">"Плагины: "</string>
+    <string name="serverRemoved">Сервер удалён! Пожалуйста, перезапустите приложение! Для отмены нажмите \"Обновить\" на странице сервера</string>
+    <string name="player_message">Сообщение</string>
+    <string name="player_kickByApp">Отключён администратором сервера при помощи Android-приложения ArenaControl</string>
+    <string name="player_bannedByApp">Вы забанены администратором, использующим Android-приложение ArenaControl!</string>
+    <string name="player_kill">Убить</string>
+    <string name="versionCode">"Сборка № "</string>
+    <string name="version">"Версия: "</string>
+    <string name="about">О программе</string>
+    <string name="rateApp">Оценить приложение</string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="privacy">Политика конфиденциальности</string>
+    <string name="send_logcat">Отправить logcat</string>
+    <string name="onlyForDevelopers">Эта функция только для разработчиков! В Logcat может храниться ваш токен! Нажмите ещё для продолжения (5)</string>
+    <string name="goToGooglePlayQestion">Перейти в Google Play?</string>
+    <string name="addServerActivity_privacyText">Нажимая \"сохранить\", я принимаю политику конфиденциальности. (Можно ознакомиться в разделе \"О программе\")</string>
+    <string name="res_reboot">Перезагрузить</string>
+    <string name="res_start">Запустить</string>
+    <string name="res_stop">Остановить</string>
+</resources>
