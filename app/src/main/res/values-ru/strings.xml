@@ -47,4 +47,9 @@
     <string name="res_reboot">Перезагрузить</string>
     <string name="res_start">Запустить</string>
     <string name="res_stop">Остановить</string>
+    <string name="player_gamemode">Игровой режим</string>
+    <string name="player_adventure">Приключение</string>
+    <string name="player_creative">Творческий</string>
+    <string name="player_observer">Наблюдатель</string>
+    <string name="player_survival">Выживание</string>
 </resources>

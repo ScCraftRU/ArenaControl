@@ -78,6 +78,37 @@
                 android:layout_height="wrap_content"
                 android:text="@string/player_kill"
                 android:onClick="kill"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/player_gamemode"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/player_survival"
+                android:onClick="gameMode_survival"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/player_creative"
+                android:onClick="gameMode_creative"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/player_adventure"
+                android:onClick="gameMode_gameMode_adventure"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/player_observer"
+                android:onClick="gameMode_observer"/>
         </LinearLayout>
     </ScrollView>
 

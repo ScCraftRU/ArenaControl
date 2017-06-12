@@ -217,6 +217,7 @@ public class ServerActivity extends AppCompatActivity {
             lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (s.сервер.игроки[position].equals("")) return true;
                     s.сервер.выполнить_комманду("kick " + s.сервер.игроки[position] + " " + getString(R.string.player_kickByApp));
                     return true;
                 }
@@ -224,6 +225,7 @@ public class ServerActivity extends AppCompatActivity {
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (s.сервер.игроки[position].equals("")) return;
                     Intent intent = new Intent(s, PlayerActivity.class);
                     intent.putExtra("server", s.сервер.toJSON());
                     intent.putExtra("name", s.сервер.игроки[position]);

@@ -58,4 +58,20 @@ public class PlayerActivity extends AppCompatActivity {
     public void kill(View view) {
         сервер.выполнить_комманду("kill " + игрок);
     }
+
+    public void gameMode_survival(View view) {
+        сервер.выполнить_комманду("gamemode 0 " + игрок);
+    }
+
+    public void gameMode_creative(View view) {
+        сервер.выполнить_комманду("gamemode 1 " + игрок);
+    }
+
+    public void gameMode_gameMode_adventure(View view) {
+        сервер.выполнить_комманду("gamemode 2 " + игрок);
+    }
+
+    public void gameMode_observer(View view) {
+        сервер.выполнить_комманду("gamemode 3 " + игрок);
+    }
 }
