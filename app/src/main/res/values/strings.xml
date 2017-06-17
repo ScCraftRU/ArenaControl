@@ -57,4 +57,5 @@
     <string name="player_creative">Creative</string>
     <string name="player_adventure">Adventure</string>
     <string name="player_observer">Observer</string>
+    <string name="server_days">"Days before the end of lease: "</string>
 </resources>

@@ -169,6 +169,8 @@ public class ServerActivity extends AppCompatActivity {
             игра_версия.setText(s.сервер.игра_версия);
             TextView плагины = (TextView) rootView.findViewById(R.id.server_plugins);
             плагины.setText(s.сервер.плагины);
+            TextView дней_до_окончания_аренды = (TextView) rootView.findViewById(R.id.server_days);
+            дней_до_окончания_аренды.setText("" + s.сервер.дней_до_окончания_аренды);
         }
     }
 
@@ -394,6 +396,7 @@ public class ServerActivity extends AppCompatActivity {
                 }
                 try{
                     mViewPager.setAdapter(mSectionsPagerAdapter);
+                    setTitle(сервер.имя_сервера + " (" + сервер.id + ")");
                 } catch (NullPointerException e) {
                     e.printStackTrace();
                 }
