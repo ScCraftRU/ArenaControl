@@ -53,4 +53,6 @@
     <string name="player_observer">Наблюдатель</string>
     <string name="player_survival">Выживание</string>
     <string name="server_days">"Дней до окончания аренды: "</string>
+    <string name="add_widget">Добавить виджет</string>
+    <string name="configure">Настроить</string>
 </resources>

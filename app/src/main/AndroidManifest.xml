@@ -39,6 +39,23 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.sccraft.arenacontrol.MainActivity" />
         </activity>
+
+        <receiver android:name=".ServerInfoWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="ru.sccraft.arenacontrol.widgetclicked" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/server_info_widget_info" />
+        </receiver>
+
+        <activity android:name=".ServerInfoWidgetConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

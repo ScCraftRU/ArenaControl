@@ -58,4 +58,7 @@
     <string name="player_adventure">Adventure</string>
     <string name="player_observer">Observer</string>
     <string name="server_days">"Days before the end of lease: "</string>
+    <string name="appwidget_text" translatable="false">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
 </resources>
