@@ -6,6 +6,7 @@ import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.google.gson.JsonSyntaxException;
@@ -72,6 +73,7 @@ public class ServerInfoWidget extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
         final String action = intent.getAction();
         if (ACTION_WIDGET_RECEIVER.equals(action)) {
+            Log.d("InfoWitget", "Произошло нажатие на виджет");
             context.startActivity(intent);
         }
         super.onReceive(context, intent);
