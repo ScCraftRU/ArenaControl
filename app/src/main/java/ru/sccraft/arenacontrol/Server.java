@@ -43,8 +43,13 @@ public class Server {
     int диск_всего;
     int диск_в_процентах;
 
+    String комманда_день;
+    String комманда_ночь;
+
     public Server(String токен) {
         this.токен = токен;
+        this.комманда_день = "time set day";
+        this.комманда_ночь = "time set night";
     }
 
     public String getToken() {

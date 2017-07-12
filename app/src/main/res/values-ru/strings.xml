@@ -55,4 +55,8 @@
     <string name="server_days">"Дней до окончания аренды: "</string>
     <string name="add_widget">Добавить виджет</string>
     <string name="configure">Настроить</string>
+    <string name="serverActivity_world">МИР</string>
+    <string name="world_time">Время</string>
+    <string name="world_timeDay">День</string>
+    <string name="world_timeNight">Ночь</string>
 </resources>

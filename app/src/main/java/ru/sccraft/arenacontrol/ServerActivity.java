@@ -333,6 +333,59 @@ public class ServerActivity extends AppCompatActivity {
         }
     }
 
+    public static class ServerWorldFragment extends Fragment {
+        private View rootView;
+        /**
+         * The fragment argument representing the section number for this
+         * fragment.
+         */
+        private static final String ARG_SECTION_NUMBER = "section_number";
+
+        public ServerWorldFragment() {
+        }
+
+        /**
+         * Returns a new instance of this fragment for the given section
+         * number.
+         */
+        public static ServerWorldFragment newInstance(int sectionNumber) {
+            ServerWorldFragment fragment = new ServerWorldFragment();
+            Bundle args = new Bundle();
+            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
+            fragment.setArguments(args);
+            return fragment;
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.fragment_world, container, false);
+            //TextView textView = (TextView) rootView.findViewById(R.id.section_label);
+            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            this.rootView = rootView;
+            return rootView;
+        }
+
+        @Override
+        public void onResume() {
+            super.onResume();
+            final ServerActivity s = (ServerActivity) getActivity();
+            Button день = (Button) rootView.findViewById(R.id.world_timeDay);
+            день.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    s.сервер.выполнить_комманду(s.сервер.комманда_день);
+                }
+            });
+            Button ночь = (Button) rootView.findViewById(R.id.world_timeNight);
+            ночь.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    s.сервер.выполнить_комманду(s.сервер.комманда_ночь);
+                }
+            });
+        }
+    }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -354,6 +407,8 @@ public class ServerActivity extends AppCompatActivity {
                     return ServerPlayersFragment.newInstance(position + 1);
                 case 2:
                     return ServerResFragment.newInstance(position + 1);
+                case 3:
+                    return ServerWorldFragment.newInstance(position + 1);
             }
             return ServerInfoFragment.newInstance(position + 1);
         }
@@ -361,7 +416,7 @@ public class ServerActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 4;
         }
 
         @Override
@@ -373,6 +428,8 @@ public class ServerActivity extends AppCompatActivity {
                     return getString(R.string.serverActivity_players);
                 case 2:
                     return getString(R.string.serverActivity_resources);
+                case 3:
+                    return getString(R.string.serverActivity_world);
             }
             return null;
         }

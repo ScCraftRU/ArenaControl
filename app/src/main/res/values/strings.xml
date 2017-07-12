@@ -61,4 +61,8 @@
     <string name="appwidget_text" translatable="false">EXAMPLE</string>
     <string name="configure">Configure</string>
     <string name="add_widget">Add widget</string>
+    <string name="serverActivity_world">WORLD</string>
+    <string name="world_time">Time</string>
+    <string name="world_timeDay">Day</string>
+    <string name="world_timeNight">Night</string>
 </resources>

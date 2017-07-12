@@ -32,7 +32,7 @@ public class ServerInfoWidget extends AppWidgetProvider {
             views.setTextViewText(R.id.widgetInfo_serverName, сервер.имя_сервера + " (" + сервер.id + ")\nIP: " + сервер.ip);
             views.setTextViewText(R.id.appwidget_text, widgetText);
             Intent intent = new Intent(context, ServerActivity.class);
-            intent.setAction(ACTION_WIDGET_RECEIVER);
+            //intent.setAction(ACTION_WIDGET_RECEIVER);
             intent.putExtra("server", сервер.toJSON());
             PendingIntent actionPendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
             views.setOnClickPendingIntent(R.id.widgetInfo_serverName, actionPendingIntent);
