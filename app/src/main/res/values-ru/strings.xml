@@ -59,4 +59,5 @@
     <string name="world_time">Время</string>
     <string name="world_timeDay">День</string>
     <string name="world_timeNight">Ночь</string>
+    <string name="title_activity_server_command">Изменить комманды</string>
 </resources>

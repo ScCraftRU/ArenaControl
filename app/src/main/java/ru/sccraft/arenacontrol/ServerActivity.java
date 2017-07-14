@@ -108,9 +108,14 @@ public class ServerActivity extends AppCompatActivity {
             case R.id.action_update:
                 update();
                 return true;
+            case R.id.action_edit_commands:
+                Intent intent = new Intent(ServerActivity.this, CommandEditActivity.class);
+                intent.putExtra("server", сервер.toJSON());
+                startActivity(intent);
+                return true;
             case R.id.action_remove:
                 remove();
-                break;
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
