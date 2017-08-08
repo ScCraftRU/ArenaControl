@@ -45,11 +45,13 @@ public class Server {
 
     String комманда_день;
     String комманда_ночь;
+    String комманда_задать_время;
+    String комманда_добавить_время;
+    String комманда_погода;
 
     public Server(String токен) {
         this.токен = токен;
-        this.комманда_день = "time set day";
-        this.комманда_ночь = "time set night";
+        очистить_комманды();
     }
 
     public String getToken() {
@@ -66,6 +68,14 @@ public class Server {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         return gson.fromJson(JSON, Server.class);
+    }
+
+    void очистить_комманды() {
+        this.комманда_день = "time set day";
+        this.комманда_ночь = "time set night";
+        this.комманда_задать_время = "time set %time%";
+        this.комманда_добавить_время = "time add %time%";
+        this.комманда_погода = "weather %weather%";
     }
 
     private void updateLocalServerData(API_info api_info) {

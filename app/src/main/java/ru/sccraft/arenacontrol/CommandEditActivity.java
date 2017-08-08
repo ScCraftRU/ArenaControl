@@ -9,7 +9,8 @@ import android.widget.EditText;
 public class CommandEditActivity extends AppCompatActivity {
 
     private Server сервер;
-    EditText день, ночь;
+    EditText время_день, время_ночь, время_задать, время_добавить;
+    EditText погода;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +19,17 @@ public class CommandEditActivity extends AppCompatActivity {
         setTitle(R.string.title_activity_server_command);
         сервер = Server.fromJSON(getIntent().getStringExtra("server"));
 
-        день = (EditText) findViewById(R.id.editText_command_day);
-        ночь = (EditText) findViewById(R.id.editText_command_night);
+        время_день = (EditText) findViewById(R.id.editText_command_day);
+        время_ночь = (EditText) findViewById(R.id.editText_command_night);
+        время_задать = (EditText) findViewById(R.id.editText_command_timeSet);
+        время_добавить = (EditText) findViewById(R.id.editText_command_timeAdd);
+        погода = (EditText) findViewById(R.id.editText_weather);
 
-        день.setText(сервер.комманда_день);
-        ночь.setText(сервер.комманда_ночь);
+        время_день.setText(сервер.комманда_день);
+        время_ночь.setText(сервер.комманда_ночь);
+        время_задать.setText(сервер.комманда_задать_время);
+        время_добавить.setText(сервер.комманда_добавить_время);
+        погода.setText(сервер.комманда_погода);
     }
 
     @Override
@@ -50,8 +57,11 @@ public class CommandEditActivity extends AppCompatActivity {
 
     private void сохранить() {
         Fe fe = new Fe(this);
-        сервер.комманда_день = день.getText().toString();
-        сервер.комманда_ночь = ночь.getText().toString();
+        сервер.комманда_день = время_день.getText().toString();
+        сервер.комманда_ночь = время_ночь.getText().toString();
+        сервер.комманда_задать_время = время_задать.getText().toString();
+        сервер.комманда_добавить_время = время_добавить.getText().toString();
+        сервер.комманда_погода = погода.getText().toString();
         fe.saveFile(сервер.getToken() + ".json", сервер.toJSON());
         finish();
     }

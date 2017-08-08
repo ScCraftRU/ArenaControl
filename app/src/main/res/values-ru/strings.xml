@@ -60,4 +60,9 @@
     <string name="world_timeDay">День</string>
     <string name="world_timeNight">Ночь</string>
     <string name="title_activity_server_command">Изменить комманды</string>
+    <string name="action_clear">Очистить локальные данные</string>
+    <string name="ads">Реклама</string>
+    <string name="settings_developer_mode">Режим разработчика</string>
+    <string name="world_weather">Погода</string>
+    <string name="world_weather_clear">Ясно</string>
 </resources>

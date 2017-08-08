@@ -66,4 +66,9 @@
     <string name="world_timeDay">Day</string>
     <string name="world_timeNight">Night</string>
     <string name="title_activity_server_command">Edit commands</string>
+    <string name="action_clear">Clear local data</string>
+    <string name="ads">ADs</string>
+    <string name="settings_developer_mode">Developer mode</string>
+    <string name="world_weather">Weather</string>
+    <string name="world_weather_clear">Clear</string>
 </resources>

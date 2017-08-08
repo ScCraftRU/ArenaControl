@@ -38,6 +38,46 @@
                     android:layout_weight="1"
                     android:text="@string/world_timeNight" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/world_timeEditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/world_time" />
+
+                <Button
+                    android:id="@+id/world_timeSet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="set" />
+
+                <Button
+                    android:id="@+id/world_timeAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="add" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/world_weather"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <Button
+                android:id="@+id/world_weatherClear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/world_weather_clear" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
