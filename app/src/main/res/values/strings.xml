@@ -71,4 +71,6 @@
     <string name="settings_developer_mode">Developer mode</string>
     <string name="world_weather">Weather</string>
     <string name="world_weather_clear">Clear</string>
+    <string name="world_weather_rain">Rain</string>
+    <string name="world_weather_thunder">Thunder</string>
 </resources>

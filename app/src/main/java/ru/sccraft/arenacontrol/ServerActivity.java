@@ -428,6 +428,14 @@ public class ServerActivity extends AppCompatActivity {
                     s.сервер.выполнить_комманду(комманда);
                 }
             });
+            Button погода_дождь = (Button) rootView.findViewById(R.id.world_weatherRain);
+            погода_дождь.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String комманда = s.сервер.комманда_погода.replace("%weather%", "rain");
+                    s.сервер.выполнить_комманду(комманда);
+                }
+            });
         }
     }
 

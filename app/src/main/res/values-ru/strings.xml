@@ -65,4 +65,6 @@
     <string name="settings_developer_mode">Режим разработчика</string>
     <string name="world_weather">Погода</string>
     <string name="world_weather_clear">Ясно</string>
+    <string name="world_weather_rain">Дождь</string>
+    <string name="world_weather_thunder">Гроза</string>
 </resources>

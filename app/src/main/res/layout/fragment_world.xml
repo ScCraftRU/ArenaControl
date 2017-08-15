@@ -78,6 +78,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/world_weather_clear" />
+
+            <Button
+                android:id="@+id/world_weatherRain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/world_weather_rain" />
+
+            <Button
+                android:id="@+id/world_weatherThunder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/world_weather_thunder" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
