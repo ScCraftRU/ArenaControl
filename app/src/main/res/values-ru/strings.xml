@@ -67,4 +67,6 @@
     <string name="world_weather_clear">Ясно</string>
     <string name="world_weather_rain">Дождь</string>
     <string name="world_weather_thunder">Гроза</string>
+    <string name="devMode_enabled">Включён режим разработчика!</string>
+    <string name="devMode_reqest">Приложению нужно убедится в том, что вы его разработчик. Для этого предоставьте приложению разрешение на просмотр вашего е-mail.</string>
 </resources>
