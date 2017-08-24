@@ -68,5 +68,6 @@
     <string name="world_weather_rain">Дождь</string>
     <string name="world_weather_thunder">Гроза</string>
     <string name="devMode_enabled">Включён режим разработчика!</string>
-    <string name="devMode_reqest">Приложению нужно убедится в том, что вы его разработчик. Для этого предоставьте приложению разрешение на просмотр вашего е-mail.</string>
+    <string name="devMode_reqest">Приложению нужно убедится в том, что вы его разработчик. Для этого предоставьте приложению разрешение на просмотр вашего е-mail.\n\nВы хотите предоставить разрешение?</string>
+    <string name="settings_developer_mode_summary">Только для разработчиков! Не используйте эту настройку!</string>
 </resources>
