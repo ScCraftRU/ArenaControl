@@ -54,17 +54,25 @@ public class Server {
         очистить_комманды();
     }
 
-    public String getToken() {
+    String получить_токен() {
         return "" + токен;
     }
 
-    public String toJSON() {
+    int получить_id() {
+        return id;
+    }
+
+    String получить_имя() {
+        return "" + имя_сервера;
+    }
+
+    String toJSON() {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         return gson.toJson(this);
     }
 
-    public static Server fromJSON(String JSON) {
+    static Server fromJSON(String JSON) {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         return gson.fromJson(JSON, Server.class);

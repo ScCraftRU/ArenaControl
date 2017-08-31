@@ -1,7 +1,9 @@
 package ru.sccraft.arenacontrol;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,6 +62,31 @@ public class MainActivity extends AppCompatActivity {
                     pre.add(Server.fromJSON(fe.getFile(file[i])));
                 }
                 сервер = pre.toArray(new Server[pre.size()]);
+            }
+            SharedPreferences настройки = PreferenceManager.getDefaultSharedPreferences(this);
+            String сортировать_по = настройки.getString("settings_sort_servers_by", "");
+            String[] настройки_сортировки = getResources().getStringArray(R.array.settings_sort_servers_by);
+            if (сортировать_по.equals(настройки_сортировки[0])) {
+                Arrays.sort(сервер, new Comparator<Server>() {
+                    @Override
+                    public int compare(Server server, Server t1) {
+                        return server.получить_токен().compareTo(t1.получить_токен());
+                    }
+                });
+            } else if (сортировать_по.equals(настройки_сортировки[1])) {
+                Arrays.sort(сервер, new Comparator<Server>() {
+                    @Override
+                    public int compare(Server server, Server t1) {
+                        return ("" + server.получить_id()).compareTo(("" + t1.получить_id()));
+                    }
+                });
+            } else if (сортировать_по.equals(настройки_сортировки[2])) {
+                Arrays.sort(сервер, new Comparator<Server>() {
+                    @Override
+                    public int compare(Server server, Server t1) {
+                        return server.получить_имя().compareTo(t1.получить_имя());
+                    }
+                });
             }
             s = new String[сервер.length];
             for (int i = 0; i < сервер.length; i++) {

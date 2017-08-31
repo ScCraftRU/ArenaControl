@@ -110,7 +110,7 @@ public class ServerActivity extends ADsActivity {
                 return true;
             case R.id.action_clear:
                 сервер.очистить_комманды();
-                fe.saveFile(сервер.getToken() + ".json", сервер.toJSON());
+                fe.saveFile(сервер.получить_токен() + ".json", сервер.toJSON());
                 finish();
                 return true;
             case R.id.action_remove:
@@ -479,7 +479,7 @@ public class ServerActivity extends ADsActivity {
             @Override
             protected Boolean doInBackground(Void... params) {
                 Boolean b = сервер.update();
-                fe.saveFile(сервер.getToken() + ".json", сервер.toJSON());
+                fe.saveFile(сервер.получить_токен() + ".json", сервер.toJSON());
                 return b;
             }
 
@@ -502,7 +502,7 @@ public class ServerActivity extends ADsActivity {
     }
 
     private void remove() {
-        deleteFile(сервер.getToken() + ".json");
+        deleteFile(сервер.получить_токен() + ".json");
         Toast.makeText(getApplicationContext(), R.string.serverRemoved, Toast.LENGTH_LONG).show();
         finish();
     }

@@ -62,7 +62,7 @@ public class CommandEditActivity extends AppCompatActivity {
         сервер.комманда_задать_время = время_задать.getText().toString();
         сервер.комманда_добавить_время = время_добавить.getText().toString();
         сервер.комманда_погода = погода.getText().toString();
-        fe.saveFile(сервер.getToken() + ".json", сервер.toJSON());
+        fe.saveFile(сервер.получить_токен() + ".json", сервер.toJSON());
         finish();
     }
 }

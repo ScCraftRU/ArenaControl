@@ -72,4 +72,9 @@
     <string name="settings_developer_mode_summary">Только для разработчиков! Не используйте эту настройку!</string>
     <string name="settings_general">Основные</string>
     <string name="settings_sortServersBy">Сортировка списка серверов</string>
+    <string-array name="settings_sort_servers_by">
+        <item>Token</item>
+        <item>ID</item>
+        <item>Имя</item>
+    </string-array>
 </resources>
