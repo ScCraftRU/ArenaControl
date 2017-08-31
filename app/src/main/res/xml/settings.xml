@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <PreferenceCategory android:title="@string/settings_general">
+        <ListPreference
+            android:defaultValue="ID"
+            android:entries="@array/settings_sort_servers_by"
+            android:entryValues="@array/settings_sort_servers_by"
+            android:key="settings_sort_servers_by"
+            android:title="@string/settings_sortServersBy" />
+    </PreferenceCategory>
     <PreferenceCategory android:title="@string/ads">
 
         <SwitchPreference

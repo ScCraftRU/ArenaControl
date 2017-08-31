@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ArenaControl</string>
     <string name="action_settings">Settings</string>
-    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-2743559009390249/7052744816</string>
+    <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="title_activity_server" translatable="false">ExampleCraft (1234)</string>
     <string name="section_format" translatable="false">Hello World from section: %1$d</string>
     <string name="serverActivity_name">"Name: "</string>
@@ -46,7 +46,7 @@
     <string name="no">No</string>
     <string name="privacy">Privacy policy</string>
     <string name="send_logcat">Send logcat</string>
-    <string name="onlyForDevelopers">This function only for developers! Logcat have your token! Click again...</string>
+    <string name="onlyForDevelopers">This function only for developers! Logcat have your token! Click again…</string>
     <string name="goToGooglePlayQestion">Go to google Play?</string>
     <string name="addServerActivity_privacyText">By clicking on \"save\", I accept the privacy policy. (Refer to the \"About\" section).</string>
     <string name="res_start">Start</string>
@@ -76,4 +76,13 @@
     <string name="devMode_enabled">Developer mode enabled!</string>
     <string name="devMode_reqest">The application needs to make sure that you are its developer. To do this, give the application permission to view your e-mail.\n\nDo you want permission?</string>
     <string name="settings_developer_mode_summary">Only for developers! Do not use!</string>
+    <string name="settings_general">General</string>
+
+    <string-array name="settings_sort_servers_by">
+        <item>Token</item>
+        <item>ID</item>
+        <item>Name</item>
+    </string-array>
+    <string name="settings_sortServersBy">Sort servers by</string>
+    <string name="pref_ringtone_silent" translatable="false">12345</string>
 </resources>

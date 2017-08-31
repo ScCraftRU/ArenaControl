@@ -25,7 +25,7 @@
         android:id="@+id/widgetInfo_serverName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textColor="@android:color/background_light"
         android:textSize="14sp"
         tools:text="ExampleCraft (12345)" />
 
