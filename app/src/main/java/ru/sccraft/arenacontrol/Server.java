@@ -10,7 +10,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 /**
- * Created by alexandr on 01.06.17.
+ * Создан пользователем alexandr 01.06.2017 11:56, работающем в комманде ScCraft.
+ *
+ * Основной класс программы. Используется для работы с API
  */
 
 public class Server {

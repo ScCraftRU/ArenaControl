@@ -77,4 +77,5 @@
         <item>ID</item>
         <item>Имя</item>
     </string-array>
+    <string name="res_reload">Перезагрузить плагины</string>
 </resources>

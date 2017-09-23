@@ -130,6 +130,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/res_reboot" />
+
+            <Button
+                android:id="@+id/res_reload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/res_reload" />
         </LinearLayout>
     </ScrollView>
 

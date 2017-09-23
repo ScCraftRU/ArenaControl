@@ -278,28 +278,28 @@ public class ServerActivity extends ADsActivity {
         public void onResume() {
             super.onResume();
             final ServerActivity s = (ServerActivity) getActivity();
-            ProgressBar игроки = (ProgressBar) rootView.findViewById(R.id.res_players_pb);
+            ProgressBar игроки = rootView.findViewById(R.id.res_players_pb);
             игроки.setMax(s.сервер.игроки_всего);
             игроки.setProgress(s.сервер.игроки_на_сервере);
-            TextView игроки1 = (TextView) rootView.findViewById(R.id.res_players_title);
+            TextView игроки1 = rootView.findViewById(R.id.res_players_title);
             игроки1.setText(игроки1.getText().toString() + " (" + s.сервер.игроки_на_сервере + "/" + s.сервер.игроки_всего);
-            ProgressBar процессор = (ProgressBar) rootView.findViewById(R.id.res_cpu_pb);
+            ProgressBar процессор = rootView.findViewById(R.id.res_cpu_pb);
             процессор.setMax(100);
             процессор.setProgress(s.сервер.процессор_в_процентах);
-            TextView процессор1 = (TextView) rootView.findViewById(R.id.res_cpu_title);
+            TextView процессор1 = rootView.findViewById(R.id.res_cpu_title);
             процессор1.setText(процессор1.getText().toString() + " (" + s.сервер.процессор_в_процентах + "%)");
             ProgressBar озу = (ProgressBar) rootView.findViewById(R.id.res_ram_pb);
             озу.setMax(s.сервер.озу_всего);
             озу.setProgress(s.сервер.озу_использовано);
-            TextView озу1 = (TextView) rootView.findViewById(R.id.res_ram_title);
+            TextView озу1 = rootView.findViewById(R.id.res_ram_title);
             озу1.setText(озу1.getText().toString() + " (" + s.сервер.озу_в_процентах + "%)");
-            ProgressBar диск = (ProgressBar) rootView.findViewById(R.id.res_disk_pb);
+            ProgressBar диск = rootView.findViewById(R.id.res_disk_pb);
             диск.setMax(s.сервер.диск_всего);
             диск.setProgress(s.сервер.диск_использовано);
-            TextView диск1 = (TextView) rootView.findViewById(R.id.res_disk_title);
+            TextView диск1 = rootView.findViewById(R.id.res_disk_title);
             диск1.setText(диск1.getText().toString() + " (" + s.сервер.диск_в_процентах + "%)");
 
-            Button включить = (Button) rootView.findViewById(R.id.res_start);
+            Button включить = rootView.findViewById(R.id.res_start);
             if (s.сервер.статус == 0) {
                 включить.setVisibility(View.VISIBLE);
             } else {
@@ -311,7 +311,7 @@ public class ServerActivity extends ADsActivity {
                     s.сервер.включить();
                 }
             });
-            Button выключить = (Button) rootView.findViewById(R.id.res_stop);
+            Button выключить = rootView.findViewById(R.id.res_stop);
             if (s.сервер.статус != 0) {
                 выключить.setVisibility(View.VISIBLE);
             } else {
@@ -333,6 +333,18 @@ public class ServerActivity extends ADsActivity {
                 @Override
                 public void onClick(View v) {
                     s.сервер.перезагрузить();
+                }
+            });
+            Button перезагрузить_плагины = rootView.findViewById(R.id.res_reload);
+            if ((s.сервер.статус == 1) && (!s.сервер.плагины.equals(""))) {
+                перезагрузить_плагины.setVisibility(View.VISIBLE);
+            } else {
+                перезагрузить_плагины.setVisibility(View.GONE);
+            }
+            перезагрузить_плагины.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    s.сервер.выполнить_комманду("reload");
                 }
             });
         }
