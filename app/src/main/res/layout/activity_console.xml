@@ -51,9 +51,13 @@
 
             <TextView
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/console_textView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Console output is not work!\nYou can send any command to server!"
-                android:textSize="36sp" />
+                tools:text="Line1\nLine2\nLine3" />
         </LinearLayout>
     </ScrollView>
 

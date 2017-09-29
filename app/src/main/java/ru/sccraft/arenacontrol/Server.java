@@ -33,6 +33,7 @@ public class Server {
     String игра;
     String игра_версия;
     String плагины;
+    String консоль;
 
     String дата_окончания_аренды;
     String дней_до_окончания_аренды;
@@ -228,6 +229,10 @@ public class Server {
         byte disk_proc;
     }
 
+    private class API_console extends API_ответ {
+        String console_log;
+    }
+
     public boolean update() {
         try {
             API_запрос api_запрос = new API_запрос();
@@ -254,6 +259,13 @@ public class Server {
             gson = builder.create();
             API_res api_res = gson.fromJson(JSON, API_res.class);
             updateLocalServerRes(api_res);
+            api_запрос = new API_запрос();
+            api_запрос.query = "getconsole";
+            JSON = NetGet.getOneLine(api_запрос.toHTTPs());
+            API_console api_console = gson.fromJson(JSON,API_console.class);
+            if (api_console.console_log != null) {
+                this.консоль = api_console.console_log;
+            }
             return true;
         } catch (Exception e) {
             e.printStackTrace();
