@@ -94,7 +94,7 @@ public class ADsActivity extends AppCompatActivity {
         ad.show();
     }
 
-    void задать_баннер(AdView баннер) {
+    protected final void задать_баннер(AdView баннер) {
         this.adView = баннер;
         показать_рекламу();
     }

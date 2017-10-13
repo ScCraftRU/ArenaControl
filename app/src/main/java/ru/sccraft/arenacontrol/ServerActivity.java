@@ -30,6 +30,7 @@ public class ServerActivity extends ADsActivity {
 
     Server сервер;
     AdView adView;
+    private boolean обновлён = false;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -79,8 +80,15 @@ public class ServerActivity extends ADsActivity {
             }
         });
 
-        setTitle(сервер.имя_сервера + " (" + сервер.id + ")");
+        if (savedInstanceState != null) {
+            обновлён = savedInstanceState.getBoolean("server_updated");
+        }
 
+        setTitle(сервер.имя_сервера + " (" + сервер.id + ")");
+        if (!обновлён) {
+            обновить();
+            обновлён = true;
+        }
     }
 
 
@@ -101,7 +109,7 @@ public class ServerActivity extends ADsActivity {
         //noinspection SimplifiableIfStatement
         switch (id) {
             case R.id.action_update:
-                update();
+                обновить();
                 return true;
             case R.id.action_edit_commands:
                 Intent intent = new Intent(ServerActivity.this, CommandEditActivity.class);
@@ -114,7 +122,7 @@ public class ServerActivity extends ADsActivity {
                 finish();
                 return true;
             case R.id.action_remove:
-                remove();
+                удалить();
                 return true;
         }
 
@@ -485,7 +493,7 @@ public class ServerActivity extends ADsActivity {
         }
     }
 
-    private void update() {
+    private void обновить() {
         class Поток extends AsyncTask<Void, Void, Boolean> {
 
             @Override
@@ -513,9 +521,15 @@ public class ServerActivity extends ADsActivity {
         поток.execute();
     }
 
-    private void remove() {
+    private void удалить() {
         deleteFile(сервер.получить_токен() + ".json");
         Toast.makeText(getApplicationContext(), R.string.serverRemoved, Toast.LENGTH_LONG).show();
         finish();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putBoolean("server_updated", обновлён);
+        super.onSaveInstanceState(outState);
     }
 }
