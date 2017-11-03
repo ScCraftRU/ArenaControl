@@ -9,7 +9,7 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * Created by alexandr on 02.06.17.
+ * Создан пользователем alexandr 02.06.17 16:43, работающем в комманде ScCraft.
  */
 
 public class NetGet {
