@@ -45,9 +45,13 @@ public class AddServerActivity extends AppCompatActivity {
     }
 
     private void скачать_сканнер() {
-        Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
-        Intent marketIntent = new Intent(Intent.ACTION_VIEW,marketUri);
-        startActivity(marketIntent);
+        try {
+            Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
+            Intent marketIntent = new Intent(Intent.ACTION_VIEW,marketUri);
+            startActivity(marketIntent);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
