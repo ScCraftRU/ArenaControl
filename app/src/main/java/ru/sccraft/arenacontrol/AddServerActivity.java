@@ -1,6 +1,8 @@
 package ru.sccraft.arenacontrol;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,7 +42,21 @@ public class AddServerActivity extends AppCompatActivity {
             startActivityForResult(intent, 0);
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
-            скачать_сканнер();
+            AlertDialog.Builder диалог = new AlertDialog.Builder(this);
+            диалог.setTitle(R.string.addServerActivity_downloadQR_title)
+                    .setMessage(R.string.addServerActivity_downloadQR_content)
+                    .setCancelable(true)
+                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            скачать_сканнер();
+                        }
+                    })
+                    .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                        }
+                    }).show();
         }
     }
 
