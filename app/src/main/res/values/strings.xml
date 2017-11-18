@@ -86,4 +86,5 @@
     <string name="settings_sortServersBy">Sort servers by</string>
     <string name="pref_ringtone_silent" translatable="false">12345</string>
     <string name="res_reload">Reload plugins</string>
+    <string name="addServerActivity_scanQR">Scan QR code</string>
 </resources>

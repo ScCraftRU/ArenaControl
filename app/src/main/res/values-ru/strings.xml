@@ -78,4 +78,5 @@
         <item>Имя</item>
     </string-array>
     <string name="res_reload">Перезагрузить плагины</string>
+    <string name="addServerActivity_scanQR">Сканировать QR код</string>
 </resources>
