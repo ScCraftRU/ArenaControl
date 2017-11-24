@@ -57,6 +57,7 @@
                 android:id="@+id/console_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textIsSelectable="true"
                 tools:text="Line1\nLine2\nLine3" />
         </LinearLayout>
     </ScrollView>
