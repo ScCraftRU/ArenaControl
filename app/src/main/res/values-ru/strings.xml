@@ -81,4 +81,5 @@
     <string name="addServerActivity_scanQR">Сканировать QR код</string>
     <string name="addServerActivity_downloadQR_content">Вы хотите установить сканер QR кодов из Google Play?</string>
     <string name="addServerActivity_downloadQR_title">Сканнер QR кодов не установлен!</string>
+    <string name="license">"Лицензия: "</string>
 </resources>

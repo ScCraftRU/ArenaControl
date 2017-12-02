@@ -89,4 +89,5 @@
     <string name="addServerActivity_scanQR">Scan QR code</string>
     <string name="addServerActivity_downloadQR_title">The QR code scanner is not installed!</string>
     <string name="addServerActivity_downloadQR_content">Do you want to install the QR code scanner from Google Play?</string>
+    <string name="license">"License: "</string>
 </resources>
