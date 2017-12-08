@@ -84,4 +84,6 @@
     <string name="license">"Лицензия: "</string>
     <string name="license_button">Просмотреть лицензию</string>
     <string name="sourceCide">Исходный код</string>
+    <string name="addServerActivity_howToAddServer">Как добавить сервер?</string>
+    <string name="addServerActivity_howToAddServer_content">1) Зайдите на сайт MyArena.ru\n2) Войдите в ваш акаунт\n3)Перейдите на страницу управления вашим игровым сервером\n4) Перейдите в настройки\n5) Выберете пункт "API"\n6)Если API выключен, его нужно включить\n7) Скопируйте токен в приложение или отсканируйте QR код (в разделе QR код для мобильного приложения)</string>
 </resources>

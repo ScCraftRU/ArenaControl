@@ -51,6 +51,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/addServerActivity_privacyText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/addServerActivity_howToAddServer"
+                android:textAlignment="center"
+                android:textSize="36sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:text="@string/addServerActivity_howToAddServer_content" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
