@@ -162,4 +162,10 @@ public class AboutActivity extends AppCompatActivity {
         Intent открыть_лицензию_в_браузере = new Intent(Intent.ACTION_VIEW, ссылка_на_лицензию);
         startActivity(открыть_лицензию_в_браузере);
     }
+
+    public void viewSourceCode(View view) {
+        Uri ссылка_на_исходный_код = Uri.parse("https://github.com/sashaqwert/ArenaControl");
+        Intent открыть_исходный_код_в_браузере = new Intent(Intent.ACTION_VIEW, ссылка_на_исходный_код);
+        startActivity(открыть_исходный_код_в_браузере);
+    }
 }

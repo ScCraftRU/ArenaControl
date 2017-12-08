@@ -91,4 +91,5 @@
     <string name="addServerActivity_downloadQR_content">Do you want to install the QR code scanner from Google Play?</string>
     <string name="license">"License: "</string>
     <string name="license_button">View license</string>
+    <string name="sourceCide">View source code</string>
 </resources>
