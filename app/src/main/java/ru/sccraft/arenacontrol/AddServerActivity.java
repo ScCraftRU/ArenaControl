@@ -67,6 +67,7 @@ public class AddServerActivity extends AppCompatActivity {
             startActivity(marketIntent);
         } catch (ActivityNotFoundException e) {
             e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Google play is not installed!\nTo scan a QR code please, install pascage com.google.zxing.client.android", Toast.LENGTH_LONG).show();
         }
     }
 
