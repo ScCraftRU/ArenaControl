@@ -7,4 +7,10 @@
         android:icon="@android:drawable/ic_popup_sync"
         android:title="@string/action_update"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/action_whitelist"
+        android:title="whitelist" />
+    <item
+        android:id="@+id/action_banlist"
+        android:title="banlist" />
 </menu>

@@ -50,6 +50,13 @@ public class ConsoleActivity extends ADsActivity {
         switch (id) {
             case R.id.action_update:
                 обновить();
+                break;
+            case R.id.action_banlist:
+                сервер.выполнить_комманду("banlist");
+                обновить();
+                break;
+            case R.id.action_whitelist:
+                сервер.выполнить_комманду("whitelist list");
         }
         return super.onOptionsItemSelected(item);
     }
