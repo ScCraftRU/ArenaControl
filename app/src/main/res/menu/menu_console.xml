@@ -9,8 +9,10 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_whitelist"
-        android:title="whitelist" />
+        android:title="whitelist"
+        app:showAsAction="ifRoom|withText" />
     <item
         android:id="@+id/action_banlist"
-        android:title="banlist" />
+        android:title="banlist"
+        app:showAsAction="ifRoom|withText" />
 </menu>
