@@ -21,8 +21,8 @@ public class PlayerActivity extends ADsActivity {
         сервер = Server.fromJSON(getIntent().getStringExtra("server"));
         игрок = getIntent().getStringExtra("name");
         setTitle(игрок);
-        сообщение = (EditText) findViewById(R.id.player_message);
-        adview = (AdView) findViewById(R.id.adView);
+        сообщение = findViewById(R.id.player_message);
+        adview = findViewById(R.id.adView);
         задать_баннер(adview);
     }
 
