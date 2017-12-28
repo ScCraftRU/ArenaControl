@@ -441,6 +441,20 @@ public class ServerActivity extends ADsActivity {
                     s.сервер.выполнить_комманду(комманда);
                 }
             });
+            Button белый_список_включить = rootView.findViewById(R.id.world_whitelist_on);
+            белый_список_включить.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    s.сервер.выполнить_комманду("whitelist on");
+                }
+            });
+            Button белый_список_выключить = rootView.findViewById(R.id.world_whitelist_off);
+            белый_список_выключить.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    s.сервер.выполнить_комманду("whitelist off");
+                }
+            });
         }
     }
 
