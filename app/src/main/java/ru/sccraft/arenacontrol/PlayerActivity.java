@@ -71,4 +71,12 @@ public class PlayerActivity extends ADsActivity {
     public void gameMode_observer(View view) {
         сервер.выполнить_комманду("gamemode 3 " + игрок);
     }
+
+    public void whitelistAdd(View view) {
+        сервер.выполнить_комманду("whitelist add " + игрок);
+    }
+
+    public void whitelistRemove(View view) {
+        сервер.выполнить_комманду("whitelist remove " + игрок);
+    }
 }

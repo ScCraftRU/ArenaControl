@@ -126,13 +126,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/player_whitelist_add" />
+                    android:text="@string/player_whitelist_add"
+                    android:onClick="whitelistAdd"/>
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/player_whitelist_remove" />
+                    android:text="@string/player_whitelist_remove"
+                    android:onClick="whitelistRemove"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
