@@ -31,6 +31,7 @@
                     android:id="@+id/server_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     tools:text="ExampleCraft" />
             </LinearLayout>
 
@@ -47,6 +48,7 @@
                     android:id="@+id/server_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     tools:text="12345" />
             </LinearLayout>
 
@@ -81,6 +83,7 @@
                     android:id="@+id/server_ip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     tools:text="192.168.0.1:25565" />
             </LinearLayout>
 
@@ -115,6 +118,7 @@
                     android:id="@+id/server_version"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     tools:text="1.7.10" />
             </LinearLayout>
 
@@ -131,6 +135,7 @@
                     android:id="@+id/server_plugins"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     tools:text="WorldEdit -1.0, WorldGuard-1.0, PermissionsEX-1.0, Essentials-1.0" />
             </LinearLayout>
 
@@ -147,6 +152,7 @@
                     android:id="@+id/server_days"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textIsSelectable="true"
                     tools:text="321" />
             </LinearLayout>
         </LinearLayout>
