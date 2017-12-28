@@ -89,4 +89,6 @@
     <string name="world_whitelist">Белый список</string>
     <string name="world_whitelist_off">Выключить</string>
     <string name="world_whitelist_on">Включить</string>
+    <string name="player_whitelist_add">Добавить</string>
+    <string name="player_whitelist_remove">Удалить</string>
 </resources>

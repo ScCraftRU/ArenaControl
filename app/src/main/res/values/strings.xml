@@ -97,4 +97,6 @@
     <string name="world_whitelist">WhiteList</string>
     <string name="world_whitelist_off">off</string>
     <string name="world_whitelist_on">on</string>
+    <string name="player_whitelist_add">Add</string>
+    <string name="player_whitelist_remove">Remove</string>
 </resources>
