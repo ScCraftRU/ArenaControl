@@ -408,9 +408,9 @@ public class ServerActivity extends ADsActivity {
                     s.сервер.выполнить_комманду(s.сервер.комманда_ночь);
                 }
             });
-            final EditText время = (EditText) rootView.findViewById(R.id.world_timeEditText);
-            Button время_задать = (Button) rootView.findViewById(R.id.world_timeSet);
-            Button время_добавить = (Button) rootView.findViewById(R.id.world_timeAdd);
+            final EditText время = rootView.findViewById(R.id.world_timeEditText);
+            Button время_задать = rootView.findViewById(R.id.world_timeSet);
+            Button время_добавить = rootView.findViewById(R.id.world_timeAdd);
             время_задать.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -425,7 +425,7 @@ public class ServerActivity extends ADsActivity {
                     s.сервер.выполнить_комманду(комманда);
                 }
             });
-            Button погода_ясно = (Button) rootView.findViewById(R.id.world_weatherClear);
+            Button погода_ясно = rootView.findViewById(R.id.world_weatherClear);
             погода_ясно.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -433,7 +433,7 @@ public class ServerActivity extends ADsActivity {
                     s.сервер.выполнить_комманду(комманда);
                 }
             });
-            Button погода_дождь = (Button) rootView.findViewById(R.id.world_weatherRain);
+            Button погода_дождь = rootView.findViewById(R.id.world_weatherRain);
             погода_дождь.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
