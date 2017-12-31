@@ -91,7 +91,7 @@
     <string name="addServerActivity_downloadQR_content">Do you want to install the QR code scanner from Google Play?</string>
     <string name="license">"License: "</string>
     <string name="license_button">View license</string>
-    <string name="sourceCide">View source code</string>
+    <string name="sourceCode">View source code</string>
     <string name="addServerActivity_howToAddServer">How to add a server?</string>
     <string name="addServerActivity_howToAddServer_content">1) Go to MyArena.ru\n2) Login in your acount\n3)Go to your game server\n4) Go to settings\n5) Go to API\n6) Copy the token to this application or scan QR code</string>
     <string name="world_whitelist">WhiteList</string>
