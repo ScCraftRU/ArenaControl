@@ -44,7 +44,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="0.1alpha1"
+                    tools:text="0.1alpha1"
                     android:id="@+id/aboutVN" />
             </LinearLayout>
             <LinearLayout
@@ -58,7 +58,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1"
+                    tools:text="1"
                     android:id="@+id/aboutVersionCode" />
             </LinearLayout>
             <LinearLayout
