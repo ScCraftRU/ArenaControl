@@ -50,7 +50,12 @@ public class ServerActivity extends ADsActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        сервер = Server.fromJSON(getIntent().getStringExtra("server"));
+        if (savedInstanceState == null) {
+            сервер = Server.fromJSON(getIntent().getStringExtra("server"));
+        } else {
+            сервер = Server.fromJSON(savedInstanceState.getString("server"));
+            обновлён = savedInstanceState.getBoolean("server_updated");
+        }
         setContentView(R.layout.activity_server);
 
         adView = (AdView) findViewById(R.id.adView);
@@ -63,13 +68,13 @@ public class ServerActivity extends ADsActivity {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,10 +84,6 @@ public class ServerActivity extends ADsActivity {
                 startActivity(intent);
             }
         });
-
-        if (savedInstanceState != null) {
-            обновлён = savedInstanceState.getBoolean("server_updated");
-        }
 
         setTitle(сервер.имя_сервера + " (" + сервер.id + ")");
         if (!обновлён) {
@@ -544,6 +545,7 @@ public class ServerActivity extends ADsActivity {
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putBoolean("server_updated", обновлён);
+        outState.putString("server", сервер.toJSON());
         super.onSaveInstanceState(outState);
     }
 }
