@@ -96,7 +96,7 @@ public class Server {
         this.локация = api_info.server_location;
         this.тип = api_info.server_type;
         this.лимит_игроков = Integer.parseInt(api_info.server_maxslots);
-        this.имя_сервера = api_info.data.s.name;
+        if (!api_info.data.s.name.equals("")) this.имя_сервера = api_info.data.s.name;
         this.дней_до_окончания_аренды = api_info.server_daystoblock;
         this.игра = api_info.server_name;
         this.игра_версия = api_info.data.e.version;
@@ -197,7 +197,7 @@ public class Server {
                 String map;
                 int players; //количество игроков
                 int playersmax;
-                int password;
+                Object password;
             }
 
             class E {
@@ -239,16 +239,11 @@ public class Server {
             api_запрос.query = "status";
             String JSON = NetGet.getOneLine(api_запрос.toHTTPs());
             Log.i(LOG_TAG, "Ответ сервера MyArena: " + JSON);
+            JSON = JSON.replace("\"e\":[]", "\"e\":{}");
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
-            try {
-                API_info api_info = gson.fromJson(JSON, API_info.class);
-                updateLocalServerData(api_info);
-            } catch (JsonSyntaxException e) {
-                e.printStackTrace();
-                this.статус = 0;
-                this.игроки = new String[0];
-            }
+            API_info api_info = gson.fromJson(JSON, API_info.class);
+            updateLocalServerData(api_info);
             Log.i(LOG_TAG, "Основная информация обновлена!");
 
             api_запрос = new API_запрос();
