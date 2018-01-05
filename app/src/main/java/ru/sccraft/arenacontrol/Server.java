@@ -121,6 +121,9 @@ public class Server {
         this.игроки_на_сервере = api_res.players;
     }
 
+    /**
+     * Базовый класс запроса к MyArena.ru API
+     */
     private class API_запрос {
         String query;
         String token;
@@ -129,11 +132,17 @@ public class Server {
             this.token = токен;
         }
 
+        /**
+         * @return Возвращает GET-запрос, который нужно отправить на сервер MyArena.ru
+         */
         String toHTTPs() {
             return baseURL + "query=" + query + "&token=" +  token;
         }
     }
 
+    /**
+     * Запрос для отправки консольных комманд на сервер
+     */
     private class API_cmd extends API_запрос {
         String cmd;
 
@@ -153,6 +162,9 @@ public class Server {
         }
     }
 
+    /**
+     * Базовый класс ответа MyArena.ru API
+     */
     private class API_ответ {
         String status;
         String message;
@@ -162,6 +174,9 @@ public class Server {
         }
     }
 
+    /**
+     * Ответ на запрос querty=status&token=ВАШ_ТОКЕН
+     */
     private class API_info extends API_ответ {
         byte online; // 0=сервер offline, 1=сервер online, 2=сервер запускается или завис
         String server_id;
@@ -216,6 +231,9 @@ public class Server {
         }
     }
 
+    /**
+     * Ответ MyArena.ru API на запрос об использовании ресурсов
+     */
     private class API_res extends API_ответ {
         byte cpu_proc;
         int mem_used;
@@ -229,10 +247,17 @@ public class Server {
         byte disk_proc;
     }
 
+    /**
+     * Ответ MyArena.ru API на запрос о консоли сервера (Неофициальный метод - getconsole)
+     */
     private class API_console extends API_ответ {
         String console_log;
     }
 
+    /**
+     * @return Обновляет все данные о сервере в приложении. Возращает True при удачном обновлении
+     * False = Ошибка
+     */
     public boolean update() {
         try {
             API_запрос api_запрос = new API_запрос();
@@ -268,6 +293,7 @@ public class Server {
         }
     }
 
+
     public void выполнить_комманду(final String комманда) {
         Thread t = new Thread(new Runnable() {
             @Override
@@ -280,6 +306,9 @@ public class Server {
         t.start();
     }
 
+    /**
+     * Включает сервер
+     */
     public void включить() {
         Thread t = new Thread(new Runnable() {
             @Override
@@ -292,6 +321,9 @@ public class Server {
         t.start();
     }
 
+    /**
+     * Выключает сервер
+     */
     public void выключить() {
         Thread t = new Thread(new Runnable() {
             @Override
@@ -304,6 +336,9 @@ public class Server {
         t.start();
     }
 
+    /**
+     * Перезагружает сервер
+     */
     public void перезагрузить() {
         Thread t = new Thread(new Runnable() {
             @Override
