@@ -43,7 +43,7 @@ public class ServerActivity extends ADsActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
     /**
-     * The {@link ViewPager} that will host the section contents.
+     * Объект {@link ViewPager} отвечает за вкладки.
      */
     private ViewPager mViewPager;
 
@@ -58,7 +58,7 @@ public class ServerActivity extends ADsActivity {
         }
         setContentView(R.layout.activity_server);
 
-        adView = (AdView) findViewById(R.id.adView);
+        adView = findViewById(R.id.adView);
         задать_баннер(adView);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
