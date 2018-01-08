@@ -91,4 +91,5 @@
     <string name="world_whitelist_on">Включить</string>
     <string name="player_whitelist_add">Добавить</string>
     <string name="player_whitelist_remove">Удалить</string>
+    <string name="serverActivity_error">Неверный токен или нет подключения к интернету</string>
 </resources>

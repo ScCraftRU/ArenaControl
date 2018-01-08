@@ -60,7 +60,11 @@ public class ServerActivity extends ADsActivity {
         setContentView(R.layout.activity_server);
 
         adView = findViewById(R.id.adView);
-        задать_баннер(adView);
+        if (сервер.id != 0){
+            задать_баннер(adView);
+        } else {
+            adView.setVisibility(View.GONE);
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -80,7 +84,7 @@ public class ServerActivity extends ADsActivity {
             @Override
             public void onClick(View view) {
                 if (сервер.id == 0) {
-                    Snackbar.make(view, "Invalid token", Snackbar.LENGTH_LONG).setAction("Remove server", new View.OnClickListener() {
+                    Snackbar.make(view, R.string.serverActivity_error, Snackbar.LENGTH_LONG).setAction("Remove server", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             удалить();
