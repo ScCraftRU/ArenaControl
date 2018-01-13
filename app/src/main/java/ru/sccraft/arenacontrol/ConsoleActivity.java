@@ -21,7 +21,11 @@ public class ConsoleActivity extends ADsActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        сервер = Server.fromJSON(getIntent().getStringExtra("server"));
+        if (savedInstanceState == null) {
+            сервер = Server.fromJSON(getIntent().getStringExtra("server"));
+        } else {
+            сервер = Server.fromJSON(savedInstanceState.getString("server"));
+        }
         setContentView(R.layout.activity_console);
         setTitle(R.string.title_activity_console);
         комманда = findViewById(R.id.console_cmd);
@@ -81,5 +85,11 @@ public class ConsoleActivity extends ADsActivity {
                 консоль.setText(сервер.консоль);
             }
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("server", сервер.toJSON());
+        super.onSaveInstanceState(outState);
     }
 }
