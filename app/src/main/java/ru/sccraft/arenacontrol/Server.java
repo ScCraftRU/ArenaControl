@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -292,7 +291,6 @@ public class Server {
             return false;
         }
     }
-
 
     public void выполнить_комманду(final String комманда) {
         Thread t = new Thread(new Runnable() {
