@@ -13,7 +13,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
 /**
- * Created by alexandr on 01.08.17.
+ * Создан пользователем alexandr 01.08.17 18:23, работающем в комманде ScCraft.
  */
 
 public class SettingsActivity extends AppCompatPreferenceActivity {
