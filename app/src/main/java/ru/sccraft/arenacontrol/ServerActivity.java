@@ -330,7 +330,17 @@ public class ServerActivity extends ADsActivity {
             включить.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    s.сервер.включить();
+                    s.сервер.включить(new Server.Операция_завершена() {
+                        @Override
+                        public void успешно() {
+                            s.обновить();
+                        }
+
+                        @Override
+                        public void ошибка() {
+                        }
+                    });
+                    s.обновить();
                 }
             });
             Button выключить = rootView.findViewById(R.id.res_stop);
@@ -342,10 +352,19 @@ public class ServerActivity extends ADsActivity {
             выключить.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    s.сервер.выключить();
+                    s.сервер.выключить(new Server.Операция_завершена() {
+                        @Override
+                        public void успешно() {
+                            s.обновить();
+                        }
+
+                        @Override
+                        public void ошибка() {
+                        }
+                    });
                 }
             });
-            Button перезагрузить = (Button) rootView.findViewById(R.id.res_reboot);
+            Button перезагрузить = rootView.findViewById(R.id.res_reboot);
             if (s.сервер.статус == 1) {
                 перезагрузить.setVisibility(View.VISIBLE);
             } else {
@@ -354,7 +373,17 @@ public class ServerActivity extends ADsActivity {
             перезагрузить.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    s.сервер.перезагрузить();
+                    s.сервер.перезагрузить(new Server.Операция_завершена() {
+                        @Override
+                        public void успешно() {
+                            s.обновить();
+                        }
+
+                        @Override
+                        public void ошибка() {
+
+                        }
+                    });
                 }
             });
             Button перезагрузить_плагины = rootView.findViewById(R.id.res_reload);

@@ -1,9 +1,11 @@
 package ru.sccraft.arenacontrol;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -307,45 +309,110 @@ public class Server {
     /**
      * Включает сервер
      */
-    public void включить() {
-        Thread t = new Thread(new Runnable() {
+    public void включить(final Операция_завершена операция_завершена) {
+        class Поток extends AsyncTask<Void, Void, Boolean> {
+
             @Override
-            public void run() {
+            protected Boolean doInBackground(Void... voids) {
                 API_запрос api_запрос = new API_запрос();
                 api_запрос.query = "start";
-                NetGet.getOneLine(api_запрос.toHTTPs());
+                String JSON = NetGet.getOneLine(api_запрос.toHTTPs());
+
+                GsonBuilder builder = new GsonBuilder();
+                Gson gson = builder.create();
+                try {
+                    API_ответ ответ = gson.fromJson(JSON, API_ответ.class);
+                    return ответ.успех();
+                } catch (JsonSyntaxException e) {
+                    e.printStackTrace();
+                    return false;
+                }
             }
-        });
-        t.start();
+
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                super.onPostExecute(aBoolean);
+                if (aBoolean) {
+                    операция_завершена.успешно();
+                }
+            }
+        }
+        Поток поток = new Поток();
+        поток.execute();
     }
 
     /**
      * Выключает сервер
      */
-    public void выключить() {
-        Thread t = new Thread(new Runnable() {
+    public void выключить(final Операция_завершена операция_завершена) {
+        class Поток extends AsyncTask<Void, Void, Boolean> {
+
             @Override
-            public void run() {
+            protected Boolean doInBackground(Void... voids) {
                 API_запрос api_запрос = new API_запрос();
                 api_запрос.query = "stop";
-                NetGet.getOneLine(api_запрос.toHTTPs());
+                String JSON = NetGet.getOneLine(api_запрос.toHTTPs());
+
+                GsonBuilder builder = new GsonBuilder();
+                Gson gson = builder.create();
+                try {
+                    API_ответ ответ = gson.fromJson(JSON, API_ответ.class);
+                    return ответ.успех();
+                } catch (JsonSyntaxException e) {
+                    e.printStackTrace();
+                    return false;
+                }
             }
-        });
-        t.start();
+
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                super.onPostExecute(aBoolean);
+                if (aBoolean) {
+                    операция_завершена.успешно();
+                }
+            }
+        }
+        Поток поток = new Поток();
+        поток.execute();
     }
 
     /**
      * Перезагружает сервер
      */
-    public void перезагрузить() {
-        Thread t = new Thread(new Runnable() {
+    public void перезагрузить(final Операция_завершена операция_завершена) {
+        class Поток extends AsyncTask<Void, Void, Boolean> {
+
             @Override
-            public void run() {
+            protected Boolean doInBackground(Void... voids) {
                 API_запрос api_запрос = new API_запрос();
                 api_запрос.query = "restart";
-                NetGet.getOneLine(api_запрос.toHTTPs());
+                String JSON = NetGet.getOneLine(api_запрос.toHTTPs());
+
+                GsonBuilder builder = new GsonBuilder();
+                Gson gson = builder.create();
+                try {
+                    API_ответ ответ = gson.fromJson(JSON, API_ответ.class);
+                    return ответ.успех();
+                } catch (JsonSyntaxException e) {
+                    e.printStackTrace();
+                    return false;
+                }
             }
-        });
-        t.start();
+
+            @Override
+            protected void onPostExecute(Boolean aBoolean) {
+                super.onPostExecute(aBoolean);
+                if (aBoolean) {
+                    операция_завершена.успешно();
+                }
+            }
+        }
+        Поток поток = new Поток();
+        поток.execute();
+    }
+
+    public static interface Операция_завершена {
+        public void успешно();
+        public void ошибка();
     }
 }
