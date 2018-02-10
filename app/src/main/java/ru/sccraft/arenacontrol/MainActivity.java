@@ -93,8 +93,9 @@ public class MainActivity extends AppCompatActivity {
                 s[i] = сервер[i].имя_сервера;
                 Log.d(LOG_TAG, "Сервер: " + s[i]);
             }
-            ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, s);
-            lv.setAdapter(aa);
+            //ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, s);
+            ServerAdapter адаптер = new ServerAdapter(this, сервер);
+            lv.setAdapter(адаптер);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

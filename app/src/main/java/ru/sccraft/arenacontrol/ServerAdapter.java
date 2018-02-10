@@ -19,6 +19,7 @@ public class ServerAdapter extends BaseAdapter {
 
     public ServerAdapter(Context context, Server[] масив_серверов) {
         this.context = context;
+        lInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         сервер = масив_серверов;
     }
 
