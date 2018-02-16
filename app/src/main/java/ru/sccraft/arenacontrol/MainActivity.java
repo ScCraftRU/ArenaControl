@@ -7,12 +7,10 @@ import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -21,23 +19,21 @@ import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String LOG_TAG = "MainActivity";
     Server[] сервер;
     String[] file;
     Fe fe;
     ListView lv;
-    String[] s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         fe = new Fe(this);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        lv = (ListView) findViewById(R.id.listView_main);
+        lv = findViewById(R.id.listView_main);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,12 +50,14 @@ public class MainActivity extends AppCompatActivity {
         file = fileList();
         if (file.length == 0) {
             //нет серверов
+            setTitle(R.string.noServers);
         } else {
+            setTitle(R.string.app_name);
             {
                 ArrayList<Server> pre = new ArrayList<>();
-                for (int i = 0; i < file.length; i++) {
-                    if (!(file[i].contains(".json"))) continue;
-                    pre.add(Server.fromJSON(fe.getFile(file[i])));
+                for (String файл : file) {
+                    if (!(файл.contains(".json"))) continue;
+                    pre.add(Server.fromJSON(fe.getFile(файл)));
                 }
                 сервер = pre.toArray(new Server[pre.size()]);
             }
@@ -88,12 +86,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-            s = new String[сервер.length];
-            for (int i = 0; i < сервер.length; i++) {
-                s[i] = сервер[i].имя_сервера;
-                Log.d(LOG_TAG, "Сервер: " + s[i]);
-            }
-            //ArrayAdapter<String> aa = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, s);
             ServerAdapter адаптер = new ServerAdapter(this, сервер);
             lv.setAdapter(адаптер);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

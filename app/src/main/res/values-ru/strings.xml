@@ -92,4 +92,5 @@
     <string name="player_whitelist_add">Добавить</string>
     <string name="player_whitelist_remove">Удалить</string>
     <string name="serverActivity_error">Неверный токен или нет подключения к интернету</string>
+    <string name="noServers">Нет серверов</string>
 </resources>
