@@ -33,7 +33,7 @@
     <string name="server_version">"Game version: "</string>
     <string name="server_plugins">"Plugins: "</string>
     <string name="server_id" translatable="false">"ID: "</string>
-    <string name="serverRemoved">Server removed! Please, restart this app! Click update to cancel this!</string>
+    <string name="serverRemoved">Server removed!</string>
     <string name="player_message">Message</string>
     <string name="player_kickByApp">Kicked by ArenaControl Android application</string>
     <string name="player_bannedByApp">You are banned by ArenaControl Android application!</string>

@@ -28,7 +28,7 @@
     <string name="server_game">"Игра: "</string>
     <string name="server_version">"Версия игры: "</string>
     <string name="server_plugins">"Плагины: "</string>
-    <string name="serverRemoved">Сервер удалён! Пожалуйста, перезапустите приложение! Для отмены нажмите \"Обновить\" на странице сервера</string>
+    <string name="serverRemoved">Сервер удалён!</string>
     <string name="player_message">Сообщение</string>
     <string name="player_kickByApp">Отключён администратором сервера при помощи Android-приложения ArenaControl</string>
     <string name="player_bannedByApp">Вы забанены администратором, использующим Android-приложение ArenaControl!</string>
