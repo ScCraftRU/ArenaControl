@@ -7,8 +7,8 @@ android {
         applicationId "ru.sccraft.arenacontrol"
         minSdkVersion 17
         targetSdkVersion 27
-        versionCode 37
-        versionName "0.20"
+        versionCode 38
+        versionName "0.21"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -32,12 +32,6 @@ dependencies {
     compile 'com.google.firebase:firebase-ads:11.8.0'
     testCompile 'junit:junit:4.12'
 }
-
-
-
-
-
-
 
 
 
