@@ -9,12 +9,4 @@
             android:key="settings_sort_servers_by"
             android:title="@string/settings_sortServersBy" />
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/ads">
-
-        <SwitchPreference
-            android:defaultValue="false"
-            android:key="disableADsByEmail"
-            android:summary="@string/settings_developer_mode_summary"
-            android:title="@string/settings_developer_mode" />
-    </PreferenceCategory>
 </PreferenceScreen>
