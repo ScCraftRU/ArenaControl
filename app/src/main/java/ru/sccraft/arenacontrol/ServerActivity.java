@@ -65,9 +65,8 @@ public class ServerActivity extends ADsActivity {
         } else {
             adView.setVisibility(View.GONE);
         }
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -338,6 +337,7 @@ public class ServerActivity extends ADsActivity {
 
                         @Override
                         public void ошибка() {
+                            Toast.makeText(rootView.getContext().getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                         }
                     });
                     s.обновить();
@@ -360,6 +360,7 @@ public class ServerActivity extends ADsActivity {
 
                         @Override
                         public void ошибка() {
+                            Toast.makeText(rootView.getContext().getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
@@ -381,7 +382,7 @@ public class ServerActivity extends ADsActivity {
 
                         @Override
                         public void ошибка() {
-
+                            Toast.makeText(rootView.getContext().getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

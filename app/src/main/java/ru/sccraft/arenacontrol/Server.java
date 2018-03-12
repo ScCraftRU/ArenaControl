@@ -323,7 +323,7 @@ public class Server {
                 try {
                     API_ответ ответ = gson.fromJson(JSON, API_ответ.class);
                     return ответ.успех();
-                } catch (JsonSyntaxException e) {
+                } catch (NullPointerException e) {
                     e.printStackTrace();
                     return false;
                 }
@@ -334,6 +334,8 @@ public class Server {
                 super.onPostExecute(aBoolean);
                 if (aBoolean) {
                     операция_завершена.успешно();
+                } else {
+                    операция_завершена.ошибка();
                 }
             }
         }
@@ -358,7 +360,7 @@ public class Server {
                 try {
                     API_ответ ответ = gson.fromJson(JSON, API_ответ.class);
                     return ответ.успех();
-                } catch (JsonSyntaxException e) {
+                } catch (NullPointerException e) {
                     e.printStackTrace();
                     return false;
                 }
@@ -369,6 +371,8 @@ public class Server {
                 super.onPostExecute(aBoolean);
                 if (aBoolean) {
                     операция_завершена.успешно();
+                } else {
+                    операция_завершена.ошибка();
                 }
             }
         }
@@ -393,7 +397,7 @@ public class Server {
                 try {
                     API_ответ ответ = gson.fromJson(JSON, API_ответ.class);
                     return ответ.успех();
-                } catch (JsonSyntaxException e) {
+                } catch (NullPointerException e) {
                     e.printStackTrace();
                     return false;
                 }
@@ -404,6 +408,8 @@ public class Server {
                 super.onPostExecute(aBoolean);
                 if (aBoolean) {
                     операция_завершена.успешно();
+                } else {
+                    операция_завершена.ошибка();
                 }
             }
         }
@@ -411,7 +417,7 @@ public class Server {
         поток.execute();
     }
 
-    public static interface Операция_завершена {
+    public interface Операция_завершена {
         public void успешно();
         public void ошибка();
     }
