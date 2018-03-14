@@ -32,6 +32,7 @@ public class ServerActivity extends ADsActivity {
     Server сервер;
     AdView adView;
     private boolean обновлён = false;
+    private Поток поток;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -56,6 +57,12 @@ public class ServerActivity extends ADsActivity {
         } else {
             сервер = Server.fromJSON(savedInstanceState.getString("server"));
             обновлён = savedInstanceState.getBoolean("server_updated");
+        }
+        поток = (Поток) getLastCustomNonConfigurationInstance();
+        if (поток == null) {
+            поток = new Поток(this);
+        } else {
+            поток.link(this);
         }
         setContentView(R.layout.activity_server);
 
@@ -552,31 +559,13 @@ public class ServerActivity extends ADsActivity {
     }
 
     private void обновить() {
-        class Поток extends AsyncTask<Void, Void, Boolean> {
-
-            @Override
-            protected Boolean doInBackground(Void... params) {
-                Boolean b = сервер.update();
-                fe.saveFile(сервер.получить_токен() + ".json", сервер.toJSON());
-                return b;
-            }
-
-            @Override
-            protected void onPostExecute(Boolean aBoolean) {
-                super.onPostExecute(aBoolean);
-                if (!aBoolean) {
-                    Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
-                }
-                try{
-                    mViewPager.setAdapter(mSectionsPagerAdapter);
-                    setTitle(сервер.имя_сервера + " (" + сервер.id + ")");
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                }
-            }
+        try {
+            поток.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Поток поток = new Поток(this);
+            поток.execute();
         }
-        Поток поток = new Поток();
-        поток.execute();
     }
 
     private void удалить() {
@@ -590,5 +579,44 @@ public class ServerActivity extends ADsActivity {
         outState.putBoolean("server_updated", обновлён);
         outState.putString("server", сервер.toJSON());
         super.onSaveInstanceState(outState);
+    }
+
+    private class Поток extends AsyncTask<Void, Void, Boolean> {
+
+        ServerActivity activity;
+
+        Поток(ServerActivity активность) {
+            this.activity = активность;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            Boolean b = activity.сервер.update();
+            activity.fe.saveFile(сервер.получить_токен() + ".json", сервер.toJSON());
+            return b;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            if (!aBoolean) {
+                Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
+            }
+            try{
+                activity.mViewPager.setAdapter(activity.mSectionsPagerAdapter);
+                setTitle(activity.сервер.имя_сервера + " (" + activity.сервер.id + ")");
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+        }
+
+        void link(ServerActivity активность) {
+            activity = активность;
+        }
+    }
+
+    @Override
+    public Object onRetainCustomNonConfigurationInstance() {
+        return поток;
     }
 }
