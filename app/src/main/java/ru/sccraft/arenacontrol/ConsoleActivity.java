@@ -1,5 +1,6 @@
 package ru.sccraft.arenacontrol;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,10 +14,10 @@ import com.google.android.gms.ads.AdView;
 
 public class ConsoleActivity extends ADsActivity {
 
-    Server сервер;
-    TextView консоль;
-    EditText комманда;
-    ImageButton отправить;
+    private Server сервер;
+    private TextView консоль;
+    private EditText комманда;
+    private Поток поток;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +27,15 @@ public class ConsoleActivity extends ADsActivity {
         } else {
             сервер = Server.fromJSON(savedInstanceState.getString("server"));
         }
+        поток = (Поток) getLastCustomNonConfigurationInstance();
+        if (поток == null) {
+            поток = new Поток(this);
+        } else {
+            поток.link(this);
+        }
         setContentView(R.layout.activity_console);
         setTitle(R.string.title_activity_console);
         комманда = findViewById(R.id.console_cmd);
-        отправить = findViewById(R.id.console_send);
         консоль = findViewById(R.id.console_textView);
         консоль.setText(сервер.консоль);
         AdView adView = findViewById(R.id.adView);
@@ -67,23 +73,39 @@ public class ConsoleActivity extends ADsActivity {
     }
 
     void обновить() {
-        Поток поток = new Поток();
-        поток.execute();
+        try{
+            поток.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            поток = new Поток(this);
+            поток.execute();
+        }
     }
 
-    class Поток extends AsyncTask<Void, Void, Boolean> {
+    @SuppressLint("StaticFieldLeak")
+    private class Поток extends AsyncTask<Void, Void, Boolean> {
+
+        ConsoleActivity активность;
+
+        Поток(ConsoleActivity activity) {
+            this.активность = activity;
+        }
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            return сервер.update();
+            return активность.сервер.update();
         }
 
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             if (aBoolean) {
-                консоль.setText(сервер.консоль);
+                активность.консоль.setText(активность.сервер.консоль);
             }
+        }
+
+        void link(ConsoleActivity activity) {
+            активность = activity;
         }
     }
 
@@ -91,5 +113,10 @@ public class ConsoleActivity extends ADsActivity {
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString("server", сервер.toJSON());
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public Object onRetainCustomNonConfigurationInstance() {
+        return поток;
     }
 }
