@@ -523,15 +523,24 @@ public class ServerActivity extends ADsActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a ServerInfoFragment (defined as a static inner class below).
-            switch(position) {
-                case 0:
-                    return ServerInfoFragment.newInstance(position + 1);
-                case 1:
-                    return ServerPlayersFragment.newInstance(position + 1);
-                case 2:
-                    return ServerResFragment.newInstance(position + 1);
-                case 3:
-                    return ServerWorldFragment.newInstance(position + 1);
+            if (сервер.статус == 1) {
+                switch(position) {
+                    case 0:
+                        return ServerInfoFragment.newInstance(position + 1);
+                    case 1:
+                        return ServerPlayersFragment.newInstance(position + 1);
+                    case 2:
+                        return ServerResFragment.newInstance(position + 1);
+                    case 3:
+                        return ServerWorldFragment.newInstance(position + 1);
+                }
+            } else {
+                switch (position) {
+                    case 0:
+                        return ServerInfoFragment.newInstance(position + 1);
+                    case 1:
+                        return ServerResFragment.newInstance(position + 1);
+                }
             }
             return ServerInfoFragment.newInstance(position + 1);
         }
@@ -539,20 +548,33 @@ public class ServerActivity extends ADsActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 4;
+            if (сервер.статус == 1) {
+                return 4;
+            } else {
+                return 2;
+            }
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return getString(R.string.serverActivity_info);
-                case 1:
-                    return getString(R.string.serverActivity_players);
-                case 2:
-                    return getString(R.string.serverActivity_resources);
-                case 3:
-                    return getString(R.string.serverActivity_world);
+            if (сервер.статус == 1) {
+                switch (position) {
+                    case 0:
+                        return getString(R.string.serverActivity_info);
+                    case 1:
+                        return getString(R.string.serverActivity_players);
+                    case 2:
+                        return getString(R.string.serverActivity_resources);
+                    case 3:
+                        return getString(R.string.serverActivity_world);
+                }
+            } else {
+                switch (position) {
+                    case 0:
+                        return getString(R.string.serverActivity_info);
+                    case 1:
+                        return getString(R.string.serverActivity_resources);
+                }
             }
             return null;
         }
