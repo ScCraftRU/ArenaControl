@@ -1,5 +1,6 @@
 package ru.sccraft.arenacontrol;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,7 +30,7 @@ import com.google.android.gms.ads.AdView;
 
 public class ServerActivity extends ADsActivity {
 
-    Server сервер;
+    private Server сервер;
     AdView adView;
     private boolean обновлён = false;
     private Поток поток;
@@ -603,6 +604,7 @@ public class ServerActivity extends ADsActivity {
         super.onSaveInstanceState(outState);
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class Поток extends AsyncTask<Void, Void, Boolean> {
 
         ServerActivity activity;
@@ -625,6 +627,7 @@ public class ServerActivity extends ADsActivity {
                 Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
             }
             try{
+                activity.mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
                 activity.mViewPager.setAdapter(activity.mSectionsPagerAdapter);
                 setTitle(activity.сервер.имя_сервера + " (" + activity.сервер.id + ")");
             } catch (NullPointerException e) {
