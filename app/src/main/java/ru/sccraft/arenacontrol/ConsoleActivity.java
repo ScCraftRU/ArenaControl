@@ -60,6 +60,7 @@ public class ConsoleActivity extends ADsActivity {
     private void выполнить_комманду() {
         String command = комманда.getText().toString();
         сервер.выполнить_комманду(command);
+        комманда.setText("");
         обновить();
     }
 
