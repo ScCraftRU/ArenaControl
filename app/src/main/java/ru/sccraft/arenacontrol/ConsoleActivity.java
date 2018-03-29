@@ -3,14 +3,16 @@ package ru.sccraft.arenacontrol;
 import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdView;
+
+import static android.view.KeyEvent.KEYCODE_ENTER;
 
 public class ConsoleActivity extends ADsActivity {
 
@@ -38,11 +40,24 @@ public class ConsoleActivity extends ADsActivity {
         комманда = findViewById(R.id.console_cmd);
         консоль = findViewById(R.id.console_textView);
         консоль.setText(сервер.консоль);
+        комманда.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KEYCODE_ENTER) {
+                    выполнить_комманду();
+                }
+                return false;
+            }
+        });
         AdView adView = findViewById(R.id.adView);
         задать_баннер(adView);
     }
 
     public void send(View view) {
+        выполнить_комманду();
+    }
+
+    private void выполнить_комманду() {
         String command = комманда.getText().toString();
         сервер.выполнить_комманду(command);
         обновить();
