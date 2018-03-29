@@ -1,5 +1,6 @@
 package ru.sccraft.arenacontrol;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,9 +14,10 @@ import com.google.android.gms.ads.AdView;
  * Activity с рекламным баннером AdMob
  */
 
+@SuppressLint("Registered")
 public class ADsActivity extends AppCompatActivity {
     private AdView adView;
-    Fe fe;
+    protected Fe fe;
 
     private void показать_рекламу() {
         adView.setVisibility(View.GONE);
