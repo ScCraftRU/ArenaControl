@@ -66,9 +66,6 @@
     <string name="world_weather_clear">Ясно</string>
     <string name="world_weather_rain">Дождь</string>
     <string name="world_weather_thunder">Гроза</string>
-    <string name="devMode_enabled">Включён режим разработчика!</string>
-    <string name="devMode_reqest">Приложению нужно убедится в том, что вы его разработчик. Для этого предоставьте приложению разрешение на просмотр вашего е-mail.\n\nВы хотите предоставить разрешение?</string>
-    <string name="settings_developer_mode_summary">Только для разработчиков! Не используйте эту настройку!</string>
     <string name="settings_general">Основные</string>
     <string name="settings_sortServersBy">Сортировка списка серверов</string>
     <string-array name="settings_sort_servers_by">
@@ -92,5 +89,5 @@
     <string name="player_whitelist_remove">Удалить</string>
     <string name="serverActivity_error">Неверный токен или нет подключения к интернету</string>
     <string name="noServers">Нет серверов</string>
-    <string name="settings_clear_command">Очищать поле ввода команды</string>
+    <string name="settings_clear_command">Очищать поле ввода комманды</string>
 </resources>
