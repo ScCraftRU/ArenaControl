@@ -62,7 +62,6 @@
     <string name="title_activity_server_command">Изменить комманды</string>
     <string name="action_clear">Очистить локальные данные</string>
     <string name="ads">Реклама</string>
-    <string name="settings_developer_mode">Режим разработчика</string>
     <string name="world_weather">Погода</string>
     <string name="world_weather_clear">Ясно</string>
     <string name="world_weather_rain">Дождь</string>
@@ -93,4 +92,5 @@
     <string name="player_whitelist_remove">Удалить</string>
     <string name="serverActivity_error">Неверный токен или нет подключения к интернету</string>
     <string name="noServers">Нет серверов</string>
+    <string name="settings_clear_command">Очищать поле ввода команды</string>
 </resources>

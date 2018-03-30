@@ -1,8 +1,10 @@
 package ru.sccraft.arenacontrol;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,10 +22,12 @@ public class ConsoleActivity extends ADsActivity {
     private TextView консоль;
     private EditText комманда;
     private Поток поток;
+    private SharedPreferences настройки;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        настройки = PreferenceManager.getDefaultSharedPreferences(this);
         if (savedInstanceState == null) {
             сервер = Server.fromJSON(getIntent().getStringExtra("server"));
         } else {
@@ -60,7 +64,8 @@ public class ConsoleActivity extends ADsActivity {
     private void выполнить_комманду() {
         String command = комманда.getText().toString();
         сервер.выполнить_комманду(command);
-        комманда.setText("");
+        boolean очистить_поле_ввода = настройки.getBoolean("settings_clear_command", true);
+        if (очистить_поле_ввода) комманда.setText("");
         обновить();
     }
 

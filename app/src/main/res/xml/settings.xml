@@ -8,5 +8,9 @@
             android:entryValues="@array/settings_sort_servers_by"
             android:key="settings_sort_servers_by"
             android:title="@string/settings_sortServersBy" />
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="settings_clear_command"
+            android:title="@string/settings_clear_command" />
     </PreferenceCategory>
 </PreferenceScreen>
