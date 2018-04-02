@@ -1,5 +1,6 @@
 package ru.sccraft.arenacontrol;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -19,12 +20,13 @@ public class UpdateActivity extends AppCompatActivity {
         сервер = Server.fromJSON(getIntent().getStringExtra("server"));
         поток = (Поток) getLastCustomNonConfigurationInstance();
         if (поток == null) {
-            Поток поток = new Поток(this);
+            поток = new Поток(this);
         } else {
             поток.link(this);
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class Поток extends AsyncTask<Server, Void, Boolean> {
 
         UpdateActivity активность;
@@ -59,5 +61,9 @@ public class UpdateActivity extends AppCompatActivity {
     @Override
     public Object onRetainCustomNonConfigurationInstance() {
         return поток;
+    }
+
+    @Override
+    public void onBackPressed() {
     }
 }
