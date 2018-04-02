@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class UpdateActivity extends AppCompatActivity {
 
@@ -18,6 +19,10 @@ public class UpdateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update);
         fe = new Fe(this);
         сервер = Server.fromJSON(getIntent().getStringExtra("server"));
+        if (сервер == null) {
+            setResult(-1);
+            finish();
+        }
         поток = (Поток) getLastCustomNonConfigurationInstance();
         if (поток == null) {
             поток = new Поток(this);
@@ -51,6 +56,9 @@ public class UpdateActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
+            if (!aBoolean) {
+                Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
+            }
             Intent intent = new Intent();
             intent.putExtra("server", активность.сервер.toJSON());
             setResult(0, intent);

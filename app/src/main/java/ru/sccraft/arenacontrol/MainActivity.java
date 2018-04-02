@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             //нет серверов
             setTitle(R.string.noServers);
             String[] ошибка = new String[]{getString(R.string.noServers)};
-            ArrayAdapter<String> адаптер = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ошибка);
+            ArrayAdapter<String> адаптер = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, ошибка);
             lv.setAdapter(адаптер);
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
@@ -101,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     Server s = сервер[position];
-                    Intent intent = new Intent(MainActivity.this, ServerActivity.class);
+                    Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
                     intent.putExtra("server", s.toJSON());
-                    startActivity(intent);
+                    startActivityForResult(intent, 1);
                 }
             });
         }
@@ -135,5 +135,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == 0) {
+                String сервер = data.getStringExtra("server");
+                Intent intent = new Intent(MainActivity.this, ServerActivity.class);
+                intent.putExtra("server", сервер);
+                startActivity(intent);
+            }
+        }
     }
 }
