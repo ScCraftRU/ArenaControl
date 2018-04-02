@@ -90,4 +90,5 @@
     <string name="serverActivity_error">Неверный токен или нет подключения к интернету</string>
     <string name="noServers">Нет серверов</string>
     <string name="settings_clear_command">Очищать поле ввода комманды</string>
+    <string name="pleaseWait">Пожалуйста, подождите…</string>
 </resources>

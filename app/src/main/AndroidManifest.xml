@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ru.sccraft.arenacontrol">
 
+    <!--Разрешения нужные приложению-->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--Принудительное удаление разрешений (Нижеперечисленные разрешения не нужны приложению)-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" tools:node="remove"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" tools:node="remove"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:node="remove"/>
 
     <application
         android:allowBackup="true"
@@ -51,7 +57,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.sccraft.arenacontrol.MainActivity" />
         </activity>
-        <activity android:name=".UpdateActivity"></activity>
+        <activity android:name=".UpdateActivity"/>
     </application>
 
 </manifest>

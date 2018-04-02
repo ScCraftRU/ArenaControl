@@ -17,6 +17,7 @@ public class UpdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+        setTitle(R.string.pleaseWait);
         fe = new Fe(this);
         сервер = Server.fromJSON(getIntent().getStringExtra("server"));
         if (сервер == null) {

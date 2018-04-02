@@ -98,4 +98,5 @@
     <string name="serverActivity_error">Invalid token or no network connection</string>
     <string name="noServers">No servers</string>
     <string name="settings_clear_command">Clear the command input field</string>
+    <string name="pleaseWait">Please, wait…</string>
 </resources>
