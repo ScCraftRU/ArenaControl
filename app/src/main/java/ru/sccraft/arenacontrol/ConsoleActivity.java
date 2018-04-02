@@ -1,8 +1,7 @@
 package ru.sccraft.arenacontrol;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
@@ -21,7 +20,6 @@ public class ConsoleActivity extends ADsActivity {
     private Server сервер;
     private TextView консоль;
     private EditText комманда;
-    private Поток поток;
     private SharedPreferences настройки;
 
     @Override
@@ -32,12 +30,6 @@ public class ConsoleActivity extends ADsActivity {
             сервер = Server.fromJSON(getIntent().getStringExtra("server"));
         } else {
             сервер = Server.fromJSON(savedInstanceState.getString("server"));
-        }
-        поток = (Поток) getLastCustomNonConfigurationInstance();
-        if (поток == null) {
-            поток = new Поток(this);
-        } else {
-            поток.link(this);
         }
         setContentView(R.layout.activity_console);
         setTitle(R.string.title_activity_console);
@@ -94,40 +86,9 @@ public class ConsoleActivity extends ADsActivity {
     }
 
     void обновить() {
-        try{
-            поток.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-            поток = new Поток(this);
-            поток.execute();
-        }
-    }
-
-    @SuppressLint("StaticFieldLeak")
-    private class Поток extends AsyncTask<Void, Void, Boolean> {
-
-        ConsoleActivity активность;
-
-        Поток(ConsoleActivity activity) {
-            this.активность = activity;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... voids) {
-            return активность.сервер.update();
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-            if (aBoolean) {
-                активность.консоль.setText(активность.сервер.консоль);
-            }
-        }
-
-        void link(ConsoleActivity activity) {
-            активность = activity;
-        }
+        Intent intent = new Intent(ConsoleActivity.this, UpdateActivity.class);
+        intent.putExtra("server", сервер.toJSON());
+        startActivityForResult(intent, 1);
     }
 
     @Override
@@ -137,7 +98,13 @@ public class ConsoleActivity extends ADsActivity {
     }
 
     @Override
-    public Object onRetainCustomNonConfigurationInstance() {
-        return поток;
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == 0) {
+                сервер = Server.fromJSON(data.getStringExtra("server"));
+                консоль.setText(сервер.консоль);
+            }
+        }
     }
 }
