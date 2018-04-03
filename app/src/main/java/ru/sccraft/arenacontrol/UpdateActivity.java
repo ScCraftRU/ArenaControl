@@ -58,7 +58,7 @@ public class UpdateActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
             if (!aBoolean) {
-                Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
+                Toast.makeText(активность.getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
             }
             Intent intent = new Intent();
             intent.putExtra("server", активность.сервер.toJSON());
