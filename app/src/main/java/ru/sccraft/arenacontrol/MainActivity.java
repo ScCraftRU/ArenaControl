@@ -60,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 }
             });
+            lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    return false;
+                }
+            });
         } else {
             setTitle(R.string.app_name);
             {
@@ -104,6 +110,16 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
                     intent.putExtra("server", s.toJSON());
                     startActivityForResult(intent, 1);
+                }
+            });
+            lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    String s = сервер[position].toJSON();
+                    Intent intent = new Intent(MainActivity.this, ServerActivity.class);
+                    intent.putExtra("server", s);
+                    startActivity(intent);
+                    return true;
                 }
             });
         }
