@@ -1,11 +1,11 @@
 package ru.sccraft.arenacontrol;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonSyntaxException;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -310,6 +310,7 @@ public class Server {
      * Включает сервер
      */
     public void включить(final Операция_завершена операция_завершена) {
+        @SuppressLint("StaticFieldLeak")
         class Поток extends AsyncTask<Void, Void, Boolean> {
 
             @Override
@@ -347,6 +348,7 @@ public class Server {
      * Выключает сервер
      */
     public void выключить(final Операция_завершена операция_завершена) {
+        @SuppressLint("StaticFieldLeak")
         class Поток extends AsyncTask<Void, Void, Boolean> {
 
             @Override
@@ -418,7 +420,7 @@ public class Server {
     }
 
     public interface Операция_завершена {
-        public void успешно();
-        public void ошибка();
+        void успешно();
+        void ошибка();
     }
 }

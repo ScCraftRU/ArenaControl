@@ -512,15 +512,26 @@ public class ServerActivity extends ADsActivity {
             // getItem is called to instantiate the fragment for the given page.
             // Return a ServerInfoFragment (defined as a static inner class below).
             if (сервер.статус == 1) {
-                switch(position) {
-                    case 0:
-                        return ServerInfoFragment.newInstance(position + 1);
-                    case 1:
-                        return ServerPlayersFragment.newInstance(position + 1);
-                    case 2:
-                        return ServerResFragment.newInstance(position + 1);
-                    case 3:
-                        return ServerWorldFragment.newInstance(position + 1);
+                if (сервер.игроки_на_сервере > 0) {
+                    switch(position) {
+                        case 0:
+                            return ServerInfoFragment.newInstance(position + 1);
+                        case 1:
+                            return ServerPlayersFragment.newInstance(position + 1);
+                        case 2:
+                            return ServerResFragment.newInstance(position + 1);
+                        case 3:
+                            return ServerWorldFragment.newInstance(position + 1);
+                    }
+                } else {
+                    switch(position) {
+                        case 0:
+                            return ServerInfoFragment.newInstance(position + 1);
+                        case 1:
+                            return ServerResFragment.newInstance(position + 1);
+                        case 2:
+                            return ServerWorldFragment.newInstance(position + 1);
+                    }
                 }
             } else {
                 switch (position) {
@@ -537,7 +548,10 @@ public class ServerActivity extends ADsActivity {
         public int getCount() {
             // Show 3 total pages.
             if (сервер.статус == 1) {
-                return 4;
+                if (сервер.игроки_на_сервере > 0)
+                    return 4;
+                else
+                    return 3;
             } else {
                 return 2;
             }
@@ -546,15 +560,26 @@ public class ServerActivity extends ADsActivity {
         @Override
         public CharSequence getPageTitle(int position) {
             if (сервер.статус == 1) {
-                switch (position) {
-                    case 0:
-                        return getString(R.string.serverActivity_info);
-                    case 1:
-                        return getString(R.string.serverActivity_players);
-                    case 2:
-                        return getString(R.string.serverActivity_resources);
-                    case 3:
-                        return getString(R.string.serverActivity_world);
+                if (сервер.игроки_на_сервере > 0) {
+                    switch (position) {
+                        case 0:
+                            return getString(R.string.serverActivity_info);
+                        case 1:
+                            return getString(R.string.serverActivity_players);
+                        case 2:
+                            return getString(R.string.serverActivity_resources);
+                        case 3:
+                            return getString(R.string.serverActivity_world);
+                    }
+                } else {
+                    switch (position) {
+                        case 0:
+                            return getString(R.string.serverActivity_info);
+                        case 1:
+                            return getString(R.string.serverActivity_resources);
+                        case 2:
+                            return getString(R.string.serverActivity_world);
+                    }
                 }
             } else {
                 switch (position) {
