@@ -99,4 +99,5 @@
     <string name="noServers">No servers</string>
     <string name="settings_clear_command">Clear the command input field</string>
     <string name="pleaseWait">Please, wait…</string>
+    <string name="incorrectToken">Incorrect token</string>
 </resources>

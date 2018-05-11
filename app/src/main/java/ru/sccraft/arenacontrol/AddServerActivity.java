@@ -29,6 +29,10 @@ public class AddServerActivity extends AppCompatActivity {
 
     public void save(View view) {
         String токен = this.токен.getText().toString();
+        if ((токен.equals(""))||(токен.contains(" "))) {
+            Toast.makeText(getApplicationContext(), R.string.incorrectToken, Toast.LENGTH_SHORT).show();
+            return;
+        }
         сервер = new Server(токен);
         сервер.имя_сервера = имя.getText().toString();
         fe.saveFile(токен + ".json", сервер.toJSON());
