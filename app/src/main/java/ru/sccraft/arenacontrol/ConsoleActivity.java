@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdView;
@@ -34,6 +35,7 @@ public class ConsoleActivity extends ADsActivity {
         setContentView(R.layout.activity_console);
         setTitle(R.string.title_activity_console);
         комманда = findViewById(R.id.console_cmd);
+        ImageButton отправить = findViewById(R.id.console_send);
         консоль = findViewById(R.id.console_textView);
         консоль.setText(сервер.консоль);
         комманда.setOnKeyListener(new View.OnKeyListener() {
@@ -45,6 +47,13 @@ public class ConsoleActivity extends ADsActivity {
                 return false;
             }
         });
+        if (сервер.статус != 0) {
+            комманда.setVisibility(View.VISIBLE);
+            отправить.setVisibility(View.VISIBLE);
+        } else {
+            комманда.setVisibility(View.GONE);
+            отправить.setVisibility(View.GONE);
+        }
         AdView adView = findViewById(R.id.adView);
         задать_баннер(adView);
     }
