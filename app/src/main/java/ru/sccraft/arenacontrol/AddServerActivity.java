@@ -29,7 +29,7 @@ public class AddServerActivity extends AppCompatActivity {
 
     public void save(View view) {
         String токен = this.токен.getText().toString();
-        if ((токен.equals(""))||(токен.contains(" "))) {
+        if (((токен.equals(""))||(токен.contains(" ")))||(токен.contains("&"))) {
             Toast.makeText(getApplicationContext(), R.string.incorrectToken, Toast.LENGTH_SHORT).show();
             return;
         }
