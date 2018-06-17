@@ -1,8 +1,6 @@
 package ru.sccraft.arenacontrol;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -259,6 +257,11 @@ public class ServerActivity extends ADsActivity {
         }
     }
 
+    /**
+     * Показывает нагрузку на сервер.
+     * Позволяет включать, выключать и перезагружать сервер.
+     * На Bukkit и Spigot серверах поддерживается перезапуск плагинов.
+     */
     public static class ServerResFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
@@ -316,6 +319,8 @@ public class ServerActivity extends ADsActivity {
             TextView диск1 = rootView.findViewById(R.id.res_disk_title);
             диск1.setText(диск1.getText().toString() + " (" + s.сервер.диск_в_процентах + "%)");
 
+            final ProgressBar ожидание_ответа_от_сервера = rootView.findViewById(R.id.res_pleaseWait);
+
             Button включить = rootView.findViewById(R.id.res_start);
             if (s.сервер.статус == 0) {
                 включить.setVisibility(View.VISIBLE);
@@ -325,6 +330,7 @@ public class ServerActivity extends ADsActivity {
             включить.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    ожидание_ответа_от_сервера.setVisibility(View.VISIBLE);
                     s.сервер.включить(new Server.Операция_завершена() {
                         @Override
                         public void успешно() {
@@ -348,6 +354,7 @@ public class ServerActivity extends ADsActivity {
             выключить.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    ожидание_ответа_от_сервера.setVisibility(View.VISIBLE);
                     s.сервер.выключить(new Server.Операция_завершена() {
                         @Override
                         public void успешно() {
@@ -370,6 +377,7 @@ public class ServerActivity extends ADsActivity {
             перезагрузить.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    ожидание_ответа_от_сервера.setVisibility(View.VISIBLE);
                     s.сервер.перезагрузить(new Server.Операция_завершена() {
                         @Override
                         public void успешно() {

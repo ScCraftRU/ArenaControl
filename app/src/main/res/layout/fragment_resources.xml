@@ -113,6 +113,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:id="@+id/res_pleaseWait"/>
+
+            <!--Включение / выключение / перезагрузка-->
             <Button
                 android:id="@+id/res_start"
                 android:layout_width="match_parent"
