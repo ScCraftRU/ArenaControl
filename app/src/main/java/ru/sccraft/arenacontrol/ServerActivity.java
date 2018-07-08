@@ -321,7 +321,12 @@ public class ServerActivity extends ADsActivity {
 
             final ProgressBar ожидание_ответа_от_сервера = rootView.findViewById(R.id.res_pleaseWait);
 
-            Button включить = rootView.findViewById(R.id.res_start);
+            //Кнопки включения / выключения / перезагрузки сервера
+            final Button включить = rootView.findViewById(R.id.res_start);
+            final Button выключить = rootView.findViewById(R.id.res_stop);
+            final Button перезагрузить = rootView.findViewById(R.id.res_reboot);
+            final Button перезагрузить_плагины = rootView.findViewById(R.id.res_reload);
+
             if (s.сервер.статус == 0) {
                 включить.setVisibility(View.VISIBLE);
             } else {
@@ -342,10 +347,11 @@ public class ServerActivity extends ADsActivity {
                             Toast.makeText(rootView.getContext().getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                         }
                     });
-                    s.обновить();
+                    выключить.setVisibility(View.GONE);
+                    перезагрузить.setVisibility(View.GONE);
+                    перезагрузить_плагины.setVisibility(View.GONE);
                 }
             });
-            Button выключить = rootView.findViewById(R.id.res_stop);
             if (s.сервер.статус != 0) {
                 выключить.setVisibility(View.VISIBLE);
             } else {
@@ -366,9 +372,11 @@ public class ServerActivity extends ADsActivity {
                             Toast.makeText(rootView.getContext().getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                         }
                     });
+                    включить.setVisibility(View.GONE);
+                    перезагрузить.setVisibility(View.GONE);
+                    перезагрузить_плагины.setVisibility(View.GONE);
                 }
             });
-            Button перезагрузить = rootView.findViewById(R.id.res_reboot);
             if (s.сервер.статус == 1) {
                 перезагрузить.setVisibility(View.VISIBLE);
             } else {
@@ -389,9 +397,10 @@ public class ServerActivity extends ADsActivity {
                             Toast.makeText(rootView.getContext().getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                         }
                     });
+                    выключить.setVisibility(View.GONE);
+                    перезагрузить_плагины.setVisibility(View.GONE);
                 }
             });
-            Button перезагрузить_плагины = rootView.findViewById(R.id.res_reload);
             if ((s.сервер.статус == 1) && (!s.сервер.плагины.equals(""))) {
                 перезагрузить_плагины.setVisibility(View.VISIBLE);
             } else {
