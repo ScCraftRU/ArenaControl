@@ -12,7 +12,7 @@ public class PlayerActivity extends ADsActivity {
     private String игрок;
     private EditText сообщение;
     AdView adview;
-    private String[][] игровые_режимы;
+    private static String[][] игровые_режимы;
 
 
     @Override
@@ -35,6 +35,11 @@ public class PlayerActivity extends ADsActivity {
         игровые_режимы[0][1] = "1";
         игровые_режимы[0][2] = "2";
         игровые_режимы[0][3] = "3";
+        //1.13+
+        игровые_режимы[1][0] = "survival";
+        игровые_режимы[1][1] = "creative";
+        игровые_режимы[1][2] = "adventure";
+        игровые_режимы[1][3] = "spectator";
     }
 
     public void kick(View view) {
