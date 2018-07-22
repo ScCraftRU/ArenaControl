@@ -12,6 +12,7 @@ public class PlayerActivity extends ADsActivity {
     private String игрок;
     private EditText сообщение;
     AdView adview;
+    private String[][] игровые_режимы;
 
 
     @Override
@@ -22,8 +23,18 @@ public class PlayerActivity extends ADsActivity {
         игрок = getIntent().getStringExtra("name");
         setTitle(игрок);
         сообщение = findViewById(R.id.player_message);
+        заполнить_массив_режимов_игры();
         adview = findViewById(R.id.adView);
         задать_баннер(adview);
+    }
+
+    private void заполнить_массив_режимов_игры() {
+        игровые_режимы = new String[2][4];
+        //До 1.13
+        игровые_режимы[0][0] = "0";
+        игровые_режимы[0][1] = "1";
+        игровые_режимы[0][2] = "2";
+        игровые_режимы[0][3] = "3";
     }
 
     public void kick(View view) {
