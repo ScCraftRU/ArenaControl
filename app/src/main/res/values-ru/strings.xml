@@ -95,4 +95,5 @@
     <string name="settings_clear_command">Очищать поле ввода комманды</string>
     <string name="pleaseWait">Пожалуйста, подождите…</string>
     <string name="incorrectToken">Неверный формат Token</string>
+    <string name="commandEditActivity_newOrOldGamemode">Использовать новые комманды для смены игрового режима (1.13+)</string>
 </resources>

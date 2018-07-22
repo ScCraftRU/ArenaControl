@@ -2,6 +2,7 @@ package ru.sccraft.arenacontrol;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.SwitchCompat;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ public class CommandEditActivity extends AppCompatActivity {
     private Server сервер;
     EditText время_день, время_ночь, время_задать, время_добавить;
     EditText погода;
+    SwitchCompat использовать_новые_комманды_переключения_режима_игры;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +21,19 @@ public class CommandEditActivity extends AppCompatActivity {
         setTitle(R.string.title_activity_server_command);
         сервер = Server.fromJSON(getIntent().getStringExtra("server"));
 
-        время_день = (EditText) findViewById(R.id.editText_command_day);
-        время_ночь = (EditText) findViewById(R.id.editText_command_night);
-        время_задать = (EditText) findViewById(R.id.editText_command_timeSet);
-        время_добавить = (EditText) findViewById(R.id.editText_command_timeAdd);
-        погода = (EditText) findViewById(R.id.editText_weather);
+        время_день = findViewById(R.id.editText_command_day);
+        время_ночь = findViewById(R.id.editText_command_night);
+        время_задать = findViewById(R.id.editText_command_timeSet);
+        время_добавить = findViewById(R.id.editText_command_timeAdd);
+        погода = findViewById(R.id.editText_weather);
+        использовать_новые_комманды_переключения_режима_игры = findViewById(R.id.newGameMode);
 
         время_день.setText(сервер.комманда_день);
         время_ночь.setText(сервер.комманда_ночь);
         время_задать.setText(сервер.комманда_задать_время);
         время_добавить.setText(сервер.комманда_добавить_время);
         погода.setText(сервер.комманда_погода);
+        использовать_новые_комманды_переключения_режима_игры.setChecked(сервер.использовать_новые_коммаеды_игровых_режимов);
     }
 
     @Override
@@ -62,6 +66,7 @@ public class CommandEditActivity extends AppCompatActivity {
         сервер.комманда_задать_время = время_задать.getText().toString();
         сервер.комманда_добавить_время = время_добавить.getText().toString();
         сервер.комманда_погода = погода.getText().toString();
+        сервер.использовать_новые_коммаеды_игровых_режимов = использовать_новые_комманды_переключения_режима_игры.isChecked();
         fe.saveFile(сервер.получить_токен() + ".json", сервер.toJSON());
         finish();
     }

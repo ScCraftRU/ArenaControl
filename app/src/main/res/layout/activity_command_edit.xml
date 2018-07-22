@@ -80,6 +80,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="weather %weather%" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/player_gamemode"
+                android:textAlignment="center"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.SwitchCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/commandEditActivity_newOrOldGamemode"
+                android:id="@+id/newGameMode"/>
         </LinearLayout>
     </ScrollView>
 
