@@ -7,8 +7,8 @@ android {
         applicationId "ru.sccraft.arenacontrol"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 54
-        versionName "0.33dev2"
+        versionCode 55
+        versionName "0.33dev3"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
