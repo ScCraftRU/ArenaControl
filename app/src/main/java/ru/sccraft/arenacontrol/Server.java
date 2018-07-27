@@ -52,7 +52,7 @@ public class Server {
     String комманда_задать_время;
     String комманда_добавить_время;
     String комманда_погода;
-    boolean использовать_новые_коммаеды_игровых_режимов = true;
+    boolean геймМод_1_13 = true;
 
     public Server(String токен) {
         this.токен = токен;
@@ -72,8 +72,7 @@ public class Server {
     }
 
     String toJSON() {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
+        Gson gson = new Gson();
         return gson.toJson(this);
     }
 
@@ -89,7 +88,7 @@ public class Server {
         this.комманда_задать_время = "time set %time%";
         this.комманда_добавить_время = "time add %time%";
         this.комманда_погода = "weather %weather%";
-        this.использовать_новые_коммаеды_игровых_режимов = true;
+        this.геймМод_1_13 = true;
     }
 
     private void updateLocalServerData(API_info api_info) {

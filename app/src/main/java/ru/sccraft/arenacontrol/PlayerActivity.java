@@ -57,28 +57,28 @@ public class PlayerActivity extends ADsActivity {
     }
 
     public void gameMode_survival(View view) {
-        if (сервер.использовать_новые_коммаеды_игровых_режимов)
+        if (сервер.геймМод_1_13)
             сервер.выполнить_комманду("gamemode survival " + игрок);
         else
             сервер.выполнить_комманду("gamemode 0 " + игрок);
     }
 
     public void gameMode_creative(View view) {
-        if (сервер.использовать_новые_коммаеды_игровых_режимов)
+        if (сервер.геймМод_1_13)
             сервер.выполнить_комманду("gamemode creative " + игрок);
         else
             сервер.выполнить_комманду("gamemode 1 " + игрок);
     }
 
     public void gameMode_gameMode_adventure(View view) {
-        if (сервер.использовать_новые_коммаеды_игровых_режимов)
+        if (сервер.геймМод_1_13)
             сервер.выполнить_комманду("gamemode adventure " + игрок);
         else
             сервер.выполнить_комманду("gamemode 2 " + игрок);
     }
 
     public void gameMode_observer(View view) {
-        if (сервер.использовать_новые_коммаеды_игровых_режимов)
+        if (сервер.геймМод_1_13)
             сервер.выполнить_комманду("gamemode spectator " + игрок);
         else
             сервер.выполнить_комманду("gamemode 3 " + игрок);
