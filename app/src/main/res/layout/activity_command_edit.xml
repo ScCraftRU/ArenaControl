@@ -94,6 +94,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/commandEditActivity_newOrOldGamemode"
                 android:id="@+id/newGameMode"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/res_reload"
+                android:textAlignment="center"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editText_reload_command"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="reload" />
         </LinearLayout>
     </ScrollView>
 

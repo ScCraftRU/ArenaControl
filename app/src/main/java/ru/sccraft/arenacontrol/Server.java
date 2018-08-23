@@ -53,6 +53,7 @@ public class Server {
     String комманда_добавить_время;
     String комманда_погода;
     boolean геймМод_1_13 = true;
+    String комманда_релоад;
 
     public Server(String токен) {
         this.токен = токен;
@@ -89,6 +90,7 @@ public class Server {
         this.комманда_добавить_время = "time add %time%";
         this.комманда_погода = "weather %weather%";
         this.геймМод_1_13 = true;
+        this.комманда_релоад = "reload";
     }
 
     private void updateLocalServerData(API_info api_info) {

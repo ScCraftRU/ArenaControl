@@ -10,8 +10,7 @@ import android.widget.EditText;
 public class CommandEditActivity extends AppCompatActivity {
 
     private Server сервер;
-    EditText время_день, время_ночь, время_задать, время_добавить;
-    EditText погода;
+    EditText время_день, время_ночь, время_задать, время_добавить, погода, перезагрузить_плагины;
     SwitchCompat использовать_новые_комманды_переключения_режима_игры;
 
     @Override
@@ -27,6 +26,7 @@ public class CommandEditActivity extends AppCompatActivity {
         время_добавить = findViewById(R.id.editText_command_timeAdd);
         погода = findViewById(R.id.editText_weather);
         использовать_новые_комманды_переключения_режима_игры = findViewById(R.id.newGameMode);
+        перезагрузить_плагины = findViewById(R.id.editText_reload_command);
 
         время_день.setText(сервер.комманда_день);
         время_ночь.setText(сервер.комманда_ночь);
@@ -34,6 +34,7 @@ public class CommandEditActivity extends AppCompatActivity {
         время_добавить.setText(сервер.комманда_добавить_время);
         погода.setText(сервер.комманда_погода);
         использовать_новые_комманды_переключения_режима_игры.setChecked(сервер.геймМод_1_13);
+        перезагрузить_плагины.setText(сервер.комманда_релоад);
     }
 
     @Override
@@ -67,6 +68,7 @@ public class CommandEditActivity extends AppCompatActivity {
         сервер.комманда_добавить_время = время_добавить.getText().toString();
         сервер.комманда_погода = погода.getText().toString();
         сервер.геймМод_1_13 = использовать_новые_комманды_переключения_режима_игры.isChecked();
+        сервер.комманда_релоад = перезагрузить_плагины.getText().toString();
         fe.saveFile(сервер.получить_токен() + ".json", сервер.toJSON());
         finish();
     }
