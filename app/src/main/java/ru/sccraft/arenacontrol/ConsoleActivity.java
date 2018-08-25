@@ -89,6 +89,7 @@ public class ConsoleActivity extends ADsActivity {
                 return true;
             case R.id.action_whitelist:
                 сервер.выполнить_комманду("whitelist list");
+                обновить();
                 return true;
         }
         return super.onOptionsItemSelected(item);
