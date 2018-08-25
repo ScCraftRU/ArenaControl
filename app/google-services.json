@@ -15,11 +15,27 @@
       },
       "oauth_client": [
         {
+          "client_id": "904156531319-8elpututvemabncu45fjooigof7lcbfo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.sccraft.arenacontrol",
+            "certificate_hash": "ab8058b0d4a227b5822a122131034200187f2313"
+          }
+        },
+        {
           "client_id": "904156531319-usqcojn6mrlmietm2nuttq1uofgmfo29.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "ru.sccraft.arenacontrol",
             "certificate_hash": "77352d8439c4518320a1e7f514c982f0e8c36086"
+          }
+        },
+        {
+          "client_id": "904156531319-mqph0f97ap88bpd95g3io1ii43gghuip.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.sccraft.arenacontrol",
+            "certificate_hash": "0624ca7e976c7f4d2d75c9ef57623d554bcd7f8e"
           }
         },
         {
@@ -48,7 +64,8 @@
         "ads_service": {
           "status": 2
         }
-      }
+      },
+      "admob_app_id": "ca-app-pub-2743559009390249~5576011619"
     }
   ],
   "configuration_version": "1"
