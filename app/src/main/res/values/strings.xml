@@ -101,4 +101,5 @@
     <string name="pleaseWait">Please, wait…</string>
     <string name="incorrectToken">Incorrect token</string>
     <string name="commandEditActivity_newOrOldGamemode">Use new GameMode command (1.13+)</string>
+    <string name="console_run">Run command</string>
 </resources>
