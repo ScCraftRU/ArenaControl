@@ -1,10 +1,12 @@
 package ru.sccraft.arenacontrol;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     String[] file;
     Fe fe;
     ListView lv;
+    private boolean разрешить_использование_интендификатора = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,37 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        {
+            String рекламаID = fe.getFile("adid");
+            if (рекламаID.contains("1")) {
+                разрешить_использование_интендификатора = true;
+            } else {
+                запросить_интендификатор();
+            }
+        }
+    }
+
+    private void запросить_интендификатор() {
+        AlertDialog.Builder диалог = new AlertDialog.Builder(this);
+        диалог.setTitle(R.string.intendificatorReqest)
+                .setMessage(R.string.intendificatorMessage)
+                .setCancelable(false)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        fe.saveFile("adid", "1");
+                        разрешить_использование_интендификатора = true;
+                    }
+                })
+                .setNegativeButton(R.string.about, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+        диалог.show();
     }
 
     @Override
