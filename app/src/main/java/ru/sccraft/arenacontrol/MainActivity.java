@@ -142,10 +142,14 @@ public class MainActivity extends AppCompatActivity {
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Server s = сервер[position];
-                    Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
-                    intent.putExtra("server", s.toJSON());
-                    startActivityForResult(intent, 1);
+                    if (разрешить_использование_интендификатора) {
+                        Server s = сервер[position];
+                        Intent intent = new Intent(MainActivity.this, UpdateActivity.class);
+                        intent.putExtra("server", s.toJSON());
+                        startActivityForResult(intent, 1);
+                    } else {
+                        запросить_интендификатор();
+                    }
                 }
             });
             lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
