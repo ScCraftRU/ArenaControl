@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 public class ServerActivity extends ADsActivity {
 
@@ -57,6 +58,7 @@ public class ServerActivity extends ADsActivity {
         }
         setContentView(R.layout.activity_server);
 
+        MobileAds.initialize(this, getString(R.string.admob_appid));
         adView = findViewById(R.id.adView);
         if (сервер.id != 0){
             задать_баннер(adView);

@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import static android.view.KeyEvent.KEYCODE_ENTER;
 
@@ -33,6 +34,7 @@ public class ConsoleActivity extends ADsActivity {
             сервер = Server.fromJSON(savedInstanceState.getString("server"));
         }
         setContentView(R.layout.activity_console);
+        MobileAds.initialize(this, getString(R.string.admob_appid));
         setTitle(R.string.title_activity_console);
         комманда = findViewById(R.id.console_cmd);
         ImageButton отправить = findViewById(R.id.console_send);
