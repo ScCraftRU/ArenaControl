@@ -6,28 +6,39 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/ads_disabled"
-        android:textAlignment="center"
-        android:textSize="36sp" />
+        android:layout_height="match_parent">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/google_play"
-        android:onClick="googlePlay"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/github"
-        android:onClick="gitHub"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ads_disabled"
+                android:textAlignment="center"
+                android:textSize="36sp" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/_4pda"
-        android:onClick="pda4"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/google_play"
+                android:onClick="googlePlay"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/github"
+                android:onClick="gitHub"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/_4pda"
+                android:onClick="pda4"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
