@@ -58,12 +58,11 @@ public class ServerActivity extends ADsActivity {
         }
         setContentView(R.layout.activity_server);
 
-        MobileAds.initialize(this, getString(R.string.admob_appid));
         adView = findViewById(R.id.adView);
         if (сервер.id != 0){
             задать_баннер(adView);
         } else {
-            adView.setVisibility(View.GONE);
+            adView.setVisibility(View.GONE); //Убираем рекламу при неправельном Token. (Запросы в AdMob при этом не отправляем)
         }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

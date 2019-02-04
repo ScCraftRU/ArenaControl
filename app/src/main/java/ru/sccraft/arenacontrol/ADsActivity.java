@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 /**
  * Created by alexandr on 16.08.17.
@@ -23,6 +24,7 @@ public class ADsActivity extends AppCompatActivity {
         adView.setVisibility(View.GONE);
         String AD_DATA = fe.getFile("arenacontrol-ads");
         if (AD_DATA.contains("1")) return; //Для повышения вероятности работы покупки. Раньше использовался equals.
+        MobileAds.initialize(this, getString(R.string.admob_appid));
         adView.setVisibility(View.VISIBLE);
         AdRequest adRequest = new AdRequest.Builder().setRequestAgent("android_studio:ad_template").build();
         adView.loadAd(adRequest);

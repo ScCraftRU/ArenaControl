@@ -20,8 +20,8 @@
         android:id="@+id/console_cmd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/console_send"
         android:ems="10"
         android:hint="Command"
@@ -32,22 +32,23 @@
         style="@android:style/Widget.ImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        app:srcCompat="@android:drawable/ic_menu_send"
-        android:onClick="send"/>
+        android:layout_alignParentBottom="true"
+        android:onClick="send"
+        app:srcCompat="@android:drawable/ic_menu_send" />
 
     <ScrollView
+        android:id="@+id/console_scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
+        android:layout_above="@+id/console_cmd"
         android:layout_below="@+id/adView"
-        android:layout_above="@+id/console_cmd">
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"

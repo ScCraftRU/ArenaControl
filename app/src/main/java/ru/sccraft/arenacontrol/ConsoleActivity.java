@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.android.gms.ads.AdView;
@@ -23,6 +24,7 @@ public class ConsoleActivity extends ADsActivity {
     private TextView консоль;
     private EditText комманда;
     private SharedPreferences настройки;
+    private ScrollView прокрутка;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +36,19 @@ public class ConsoleActivity extends ADsActivity {
             сервер = Server.fromJSON(savedInstanceState.getString("server"));
         }
         setContentView(R.layout.activity_console);
-        MobileAds.initialize(this, getString(R.string.admob_appid));
         setTitle(R.string.title_activity_console);
+
+        прокрутка = findViewById(R.id.console_scrollView);
         комманда = findViewById(R.id.console_cmd);
         ImageButton отправить = findViewById(R.id.console_send);
         консоль = findViewById(R.id.console_textView);
         консоль.setText(сервер.консоль);
+        прокрутка.post(new Runnable() {
+            @Override
+            public void run() {
+                прокрутка.fullScroll(View.FOCUS_DOWN); //Прокручиваем вывод консоли до конца.
+            }
+        });
         комманда.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -116,6 +125,12 @@ public class ConsoleActivity extends ADsActivity {
             if (resultCode == 0) {
                 сервер = Server.fromJSON(data.getStringExtra("server"));
                 консоль.setText(сервер.консоль);
+                прокрутка.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        прокрутка.fullScroll(View.FOCUS_DOWN); //Прокручиваем вывод консоли до конца.
+                    }
+                });
             }
         }
     }
