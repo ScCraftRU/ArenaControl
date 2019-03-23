@@ -42,12 +42,7 @@ public class ConsoleActivity extends ADsActivity {
         ImageButton отправить = findViewById(R.id.console_send);
         консоль = findViewById(R.id.console_textView);
         консоль.setText(сервер.консоль);
-        прокрутка.post(new Runnable() {
-            @Override
-            public void run() {
-                прокрутка.fullScroll(View.FOCUS_DOWN); //Прокручиваем вывод консоли до конца.
-            }
-        });
+        прокрутить_до_конца();
         комманда.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
@@ -111,6 +106,15 @@ public class ConsoleActivity extends ADsActivity {
         startActivityForResult(intent, 1);
     }
 
+    private void прокрутить_до_конца() {
+        прокрутка.post(new Runnable() {
+            @Override
+            public void run() {
+                прокрутка.fullScroll(View.FOCUS_DOWN); //Прокручиваем вывод консоли до конца.
+            }
+        });
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         outState.putString("server", сервер.toJSON());
@@ -124,12 +128,7 @@ public class ConsoleActivity extends ADsActivity {
             if (resultCode == 0) {
                 сервер = Server.fromJSON(data.getStringExtra("server"));
                 консоль.setText(сервер.консоль);
-                прокрутка.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        прокрутка.fullScroll(View.FOCUS_DOWN); //Прокручиваем вывод консоли до конца.
-                    }
-                });
+                прокрутить_до_конца();
             }
         }
     }
