@@ -79,7 +79,7 @@ public class AboutActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int arg1) {
                     try {
                         Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("market://details?id=ru.sccraft.arenacontrol"));
+                        intent.setData(Uri.parse("market://details?id=" + getPackageName()));
                         startActivity(intent);
                     }catch (ActivityNotFoundException e) {
                         e.printStackTrace();
