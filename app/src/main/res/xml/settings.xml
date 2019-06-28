@@ -13,4 +13,8 @@
             android:key="settings_clear_command"
             android:title="@string/settings_clear_command" />
     </PreferenceCategory>
+    <SwitchPreference
+        android:defaultValue="true"
+        android:key="settings_auto_scroll_console"
+        android:title="@string/settings_auto_scroll_console" />
 </PreferenceScreen>

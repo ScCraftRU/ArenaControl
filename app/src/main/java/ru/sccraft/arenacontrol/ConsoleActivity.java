@@ -144,12 +144,13 @@ public class ConsoleActivity extends ADsActivity {
     }
 
     private void прокрутить_до_конца() {
-        прокрутка.post(new Runnable() {
-            @Override
-            public void run() {
-                прокрутка.fullScroll(View.FOCUS_DOWN); //Прокручиваем вывод консоли до конца.
-            }
-        });
+        if (настройки.getBoolean("settings_auto_scroll_console", true))
+            прокрутка.post(new Runnable() {
+                @Override
+                public void run() {
+                    прокрутка.fullScroll(View.FOCUS_DOWN); //Прокручиваем вывод консоли до конца.
+                }
+            });
     }
 
     @Override
