@@ -1,5 +1,8 @@
 package myarena.api;
 
+/**
+ * Базовый класс запроса к MyArena.ru API
+ */
 public class API_запрос {
     String query;
     String token;

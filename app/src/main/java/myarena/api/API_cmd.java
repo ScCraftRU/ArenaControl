@@ -3,6 +3,9 @@ package myarena.api;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+/**
+ * Запрос для отправки консольных комманд на сервер
+ */
 public class API_cmd extends API_запрос {
 
     String cmd;
