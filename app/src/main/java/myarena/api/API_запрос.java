@@ -8,7 +8,7 @@ public class API_запрос {
     String token;
     protected final String baseURL = "https://www.myarena.ru/api.php?";
 
-    API_запрос(String query, String token) {
+    public API_запрос(String query, String token) {
         this.query = query;
         this.token = token;
     }
@@ -16,7 +16,7 @@ public class API_запрос {
     /**
      * @return Возвращает GET-запрос, который нужно отправить на сервер MyArena.ru
      */
-    String toHTTPs() {
+    public String toHTTPs() {
         return baseURL + "query=" + query + "&token=" +  token;
     }
 }

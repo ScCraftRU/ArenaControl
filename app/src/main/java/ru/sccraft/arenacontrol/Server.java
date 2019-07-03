@@ -10,6 +10,13 @@ import com.google.gson.GsonBuilder;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
+import myarena.api.API_cmd;
+import myarena.api.API_console;
+import myarena.api.API_info;
+import myarena.api.API_res;
+import myarena.api.API_запрос;
+import myarena.api.API_ответ;
+
 /**
  * Создан пользователем alexandr 01.06.2017 11:56, работающем в комманде ScCraft.
  *
@@ -125,138 +132,6 @@ public class Server {
         this.игроки_на_сервере = api_res.players;
     }
 
-    /**
-     * Базовый класс запроса к MyArena.ru API
-     */
-    private class API_запрос {
-        String query;
-        String token;
-
-        API_запрос() {
-            this.token = токен;
-        }
-
-        /**
-         * @return Возвращает GET-запрос, который нужно отправить на сервер MyArena.ru
-         */
-        String toHTTPs() {
-            return baseURL + "query=" + query + "&token=" +  token;
-        }
-    }
-
-    /**
-     * Запрос для отправки консольных комманд на сервер
-     */
-    private class API_cmd extends API_запрос {
-        String cmd;
-
-        API_cmd() {
-            this.query = "consolecmd";
-        }
-
-        @Override
-        String toHTTPs() {
-            String cmd = this.cmd;
-            try {
-                cmd = URLEncoder.encode(this.cmd,"UTF8");
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            }
-            return baseURL + "query=" + query + "&cmd=" + cmd + "&token=" +  token;
-        }
-    }
-
-    /**
-     * Базовый класс ответа MyArena.ru API
-     */
-    private class API_ответ {
-        String status;
-        String message;
-
-        boolean успех() {
-            return status.equals("OK");
-        }
-    }
-
-    /**
-     * Ответ на запрос querty=status&token=ВАШ_ТОКЕН
-     */
-    private class API_info extends API_ответ {
-        byte online; // 0=сервер offline, 1=сервер online, 2=сервер запускается или завис
-        String server_id; //ID сервера на хостинге
-        String server_name; //Название сервера
-        String server_address; //IP и порт сервера
-        String server_maxslots; //Максимальное возможное количество подключённых игроков
-        String server_location; //Расположение сервера
-        String server_type; //Тип сервера (Обычно публичный)
-        String server_dateblock; //Сервер оплачен до...
-        String server_daystoblock; //Дней до окончания аренды
-        Data data;
-
-
-        class Data {
-            B b;
-            S s;
-            E e;
-            Player[] p;
-            Object[] t;
-
-            class B {
-                String type;
-                String ip;
-                String c_port;
-                String q_port;
-                String s_port;
-                int status;
-            }
-
-            class S {
-                String game;
-                String name;
-                String map;
-                int players; //количество игроков
-                int playersmax;
-                Object password;
-            }
-
-            class E {
-                String gametype;
-                String game_id;
-                String version; //Версия сервера
-                String plugins; //Список плагинов
-                String map;
-                String hostport;
-                String hostip;
-            }
-
-            class Player {
-                String name;
-            }
-        }
-    }
-
-    /**
-     * Ответ MyArena.ru API на запрос об использовании ресурсов
-     */
-    private class API_res extends API_ответ {
-        byte cpu_proc;
-        int mem_used;
-        int mem_quota;
-        byte mem_proc;
-        int players;
-        int players_max;
-        byte players_proc;
-        int disk_used;
-        int disk_quota;
-        byte disk_proc;
-    }
-
-    /**
-     * Ответ MyArena.ru API на запрос о консоли сервера (Неофициальный метод - getconsole)
-     */
-    private class API_console extends API_ответ {
-        String console_log;
-    }
 
     /**
      * @return Обновляет все данные о сервере в приложении. Возращает True при удачном обновлении
@@ -264,8 +139,7 @@ public class Server {
      */
     public boolean update() {
         try {
-            API_запрос api_запрос = new API_запрос();
-            api_запрос.query = "status";
+            API_запрос api_запрос = new API_запрос("status", токен);
             String JSON = NetGet.getOneLine(api_запрос.toHTTPs());
             Log.i(LOG_TAG, "Ответ сервера MyArena: " + JSON);
             JSON = JSON.replace("\"e\":[]", "\"e\":{}");
@@ -275,21 +149,17 @@ public class Server {
             updateLocalServerData(api_info);
             Log.i(LOG_TAG, "Основная информация обновлена!");
 
-            api_запрос = new API_запрос();
-            api_запрос.query = "getresources";
+            api_запрос = new API_запрос("getresources", токен);
             JSON = NetGet.getOneLine(api_запрос.toHTTPs());
             Log.i(LOG_TAG, "Ответ сервера MyArena: " + JSON);
             builder = new GsonBuilder();
             gson = builder.create();
             API_res api_res = gson.fromJson(JSON, API_res.class);
             updateLocalServerRes(api_res);
-            api_запрос = new API_запрос();
-            api_запрос.query = "getconsole";
+            api_запрос = new API_запрос("getconsole", токен);
             JSON = NetGet.getOneLine(api_запрос.toHTTPs());
             API_console api_console = gson.fromJson(JSON,API_console.class);
-            if (api_console.console_log != null) {
-                this.консоль = api_console.console_log;
-            }
+            this.консоль = api_console.toString();
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -301,8 +171,7 @@ public class Server {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                API_cmd api_cmd = new API_cmd();
-                api_cmd.cmd = комманда;
+                API_cmd api_cmd = new API_cmd(комманда ,токен);
                 NetGet.getOneLine(api_cmd.toHTTPs());
             }
         });
@@ -318,8 +187,7 @@ public class Server {
 
             @Override
             protected Boolean doInBackground(Void... voids) {
-                API_запрос api_запрос = new API_запрос();
-                api_запрос.query = "start";
+                API_запрос api_запрос = new API_запрос("start", токен);
                 String JSON = NetGet.getOneLine(api_запрос.toHTTPs());
 
                 GsonBuilder builder = new GsonBuilder();
@@ -356,8 +224,7 @@ public class Server {
 
             @Override
             protected Boolean doInBackground(Void... voids) {
-                API_запрос api_запрос = new API_запрос();
-                api_запрос.query = "stop";
+                API_запрос api_запрос = new API_запрос("stop", токен);
                 String JSON = NetGet.getOneLine(api_запрос.toHTTPs());
 
                 GsonBuilder builder = new GsonBuilder();
@@ -393,8 +260,7 @@ public class Server {
 
             @Override
             protected Boolean doInBackground(Void... voids) {
-                API_запрос api_запрос = new API_запрос();
-                api_запрос.query = "restart";
+                API_запрос api_запрос = new API_запрос("restart", токен);
                 String JSON = NetGet.getOneLine(api_запрос.toHTTPs());
 
                 GsonBuilder builder = new GsonBuilder();

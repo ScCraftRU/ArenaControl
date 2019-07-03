@@ -10,13 +10,13 @@ public class API_cmd extends API_запрос {
 
     String cmd;
 
-    API_cmd(String cmd, String token) {
+    public API_cmd(String cmd, String token) {
         super("consolecmd", token);
         this.cmd = cmd;
     }
 
     @Override
-    String toHTTPs() {
+    public String toHTTPs() {
         String cmd = this.cmd;
         try {
             cmd = URLEncoder.encode(this.cmd,"UTF8");

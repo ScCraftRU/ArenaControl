@@ -8,7 +8,7 @@ public class API_ответ {
     public String status;
     public String message;
 
-    boolean успех() {
+    public boolean успех() {
         return status.equals("OK");
     }
 
