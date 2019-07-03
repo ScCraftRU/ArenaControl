@@ -121,15 +121,15 @@ public class Server {
     }
 
     private void updateLocalServerRes(API_res api_res) {
-        this.процессор_в_процентах = api_res.cpu_proc;
-        this.озу_использовано = api_res.mem_used;
-        this.озу_всего = api_res.mem_quota;
-        this.озу_в_процентах = api_res.mem_proc;
-        this.диск_использовано = api_res.disk_used;
-        this.диск_всего = api_res.disk_quota;
-        this.диск_в_процентах = api_res.disk_proc;
-        this.игроки_всего = api_res.players_max;
-        this.игроки_на_сервере = api_res.players;
+        this.процессор_в_процентах = api_res.getCpu_proc();
+        this.озу_использовано = api_res.getMem_used();
+        this.озу_всего = api_res.getMem_quota();
+        this.озу_в_процентах = api_res.getMem_proc();
+        this.диск_использовано = api_res.getDisk_used();
+        this.диск_всего = api_res.getDisk_quota();
+        this.диск_в_процентах = api_res.getDisk_proc();
+        this.игроки_всего = api_res.getPlayers_max();
+        this.игроки_на_сервере = api_res.getPlayers();
     }
 
 
