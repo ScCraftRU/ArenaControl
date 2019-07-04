@@ -19,7 +19,7 @@ public class UpdateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update);
         setTitle(R.string.pleaseWait);
         fe = new Fe(this);
-        сервер = Server.fromJSON(getIntent().getStringExtra("server"));
+        сервер = Server.Companion.fromJSON(getIntent().getStringExtra("server"));
         if (сервер == null) {
             setResult(-1);
             finish();

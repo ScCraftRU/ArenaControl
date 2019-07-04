@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                 ArrayList<Server> pre = new ArrayList<>();
                 for (String файл : file) {
                     if (!(файл.contains(".json"))) continue;
-                    pre.add(Server.fromJSON(fe.getFile(файл)));
+                    pre.add(Server.Companion.fromJSON(fe.getFile(файл)));
                 }
                 сервер = pre.toArray(new Server[pre.size()]);
             }

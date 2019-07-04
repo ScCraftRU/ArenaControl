@@ -48,8 +48,8 @@ public class ServerAdapter extends BaseAdapter {
         Server сервер = получить_сервер(i);
         TextView название = вью.findViewById(android.R.id.text1);
         TextView ID = вью.findViewById(android.R.id.text2);
-        название.setText(сервер.имя_сервера);
-        ID.setText(сервер.id + "");
+        название.setText(сервер.getимя_сервера());
+        ID.setText(сервер.getId() + "");
         return вью;
     }
 

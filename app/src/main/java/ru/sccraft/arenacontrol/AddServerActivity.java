@@ -34,7 +34,7 @@ public class AddServerActivity extends AppCompatActivity {
             return;
         }
         сервер = new Server(токен);
-        сервер.имя_сервера = имя.getText().toString();
+        сервер.setимя_сервера(имя.getText().toString());
         fe.saveFile(токен + ".json", сервер.toJSON());
         finish();
     }

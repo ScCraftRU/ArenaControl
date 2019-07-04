@@ -53,14 +53,14 @@ public class ServerActivity extends ADsActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
-            сервер = Server.fromJSON(getIntent().getStringExtra("server"));
+            сервер = Server.Companion.fromJSON(getIntent().getStringExtra("server"));
         } else {
-            сервер = Server.fromJSON(savedInstanceState.getString("server"));
+            сервер = Server.Companion.fromJSON(savedInstanceState.getString("server"));
         }
         setContentView(R.layout.activity_server);
 
         adView = findViewById(R.id.adView);
-        if (сервер.id != 0){
+        if (сервер.getId() != 0){
             задать_баннер(adView);
         } else {
             adView.setVisibility(View.GONE); //Убираем рекламу при неправельном Token. (Запросы в AdMob при этом не отправляем)
@@ -82,7 +82,7 @@ public class ServerActivity extends ADsActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (сервер.id == 0) {
+                if (сервер.getId() == 0) {
                     Snackbar.make(view, R.string.serverActivity_error, Snackbar.LENGTH_LONG).setAction("Remove server", new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -97,7 +97,7 @@ public class ServerActivity extends ADsActivity {
             }
         });
 
-        setTitle(сервер.имя_сервера + " (" + сервер.id + ")");
+        setTitle(сервер.getимя_сервера() + " (" + сервер.getId() + ")");
     }
 
 
@@ -178,21 +178,21 @@ public class ServerActivity extends ADsActivity {
             super.onResume();
             TextView name = (TextView) rootView.findViewById(R.id.server_name);
             ServerActivity s = (ServerActivity) getActivity();
-            name.setText(s.сервер.имя_сервера);
+            name.setText(s.сервер.getимя_сервера());
             TextView id = (TextView) rootView.findViewById(R.id.server_id);
-            id.setText("" + s.сервер.id);
+            id.setText("" + s.сервер.getId());
             TextView status = (TextView) rootView.findViewById(R.id.serverActivity_status);
-            status.setText(rootView.getResources().getStringArray(R.array.statusArray)[s.сервер.статус]);
-            TextView IP = (TextView) rootView.findViewById(R.id.server_ip);
-            IP.setText(s.сервер.ip);
-            TextView игра = (TextView) rootView.findViewById(R.id.server_game);
-            игра.setText(s.сервер.игра);
-            TextView игра_версия = (TextView) rootView.findViewById(R.id.server_version);
-            игра_версия.setText(s.сервер.игра_версия);
-            TextView плагины = (TextView) rootView.findViewById(R.id.server_plugins);
-            плагины.setText(s.сервер.плагины);
-            TextView дней_до_окончания_аренды = (TextView) rootView.findViewById(R.id.server_days);
-            дней_до_окончания_аренды.setText("" + s.сервер.дней_до_окончания_аренды);
+            status.setText(rootView.getResources().getStringArray(R.array.statusArray)[s.сервер.getстатус()]);
+            TextView IP = rootView.findViewById(R.id.server_ip);
+            IP.setText(s.сервер.getIp());
+            TextView игра = rootView.findViewById(R.id.server_game);
+            игра.setText(s.сервер.getигра());
+            TextView игра_версия = rootView.findViewById(R.id.server_version);
+            игра_версия.setText(s.сервер.getигра_версия());
+            TextView плагины = rootView.findViewById(R.id.server_plugins);
+            плагины.setText(s.сервер.getплагины());
+            TextView дней_до_окончания_аренды = rootView.findViewById(R.id.server_days);
+            дней_до_окончания_аренды.setText("" + s.сервер.getдней_до_окончания_аренды());
         }
     }
 
@@ -234,25 +234,25 @@ public class ServerActivity extends ADsActivity {
             super.onResume();
             ListView lv = (ListView) rootView.findViewById(R.id.listView_players);
             s = (ServerActivity) getActivity();
-            String[] игроки = s.сервер.игроки;
+            String[] игроки = s.сервер.getигроки();
             if (игроки == null) return;
             ArrayAdapter<String> aa = new ArrayAdapter<>(s, android.R.layout.simple_list_item_1, игроки);
             lv.setAdapter(aa);
             lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                 @Override
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    if (s.сервер.игроки[position].equals("")) return true;
-                    s.сервер.выполнить_комманду("kick " + s.сервер.игроки[position] + " " + getString(R.string.player_kickByApp));
+                    if (s.сервер.getигроки()[position].equals("")) return true;
+                    s.сервер.выполнить_комманду("kick " + s.сервер.getигроки()[position] + " " + getString(R.string.player_kickByApp));
                     return true;
                 }
             });
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    if (s.сервер.игроки[position].equals("")) return;
+                    if (s.сервер.getигроки()[position].equals("")) return;
                     Intent intent = new Intent(s, PlayerActivity.class);
                     intent.putExtra("server", s.сервер.toJSON());
-                    intent.putExtra("name", s.сервер.игроки[position]);
+                    intent.putExtra("name", s.сервер.getигроки()[position]);
                     startActivity(intent);
                 }
             });
@@ -301,25 +301,25 @@ public class ServerActivity extends ADsActivity {
             super.onResume();
             final ServerActivity s = (ServerActivity) getActivity();
             ProgressBar игроки = rootView.findViewById(R.id.res_players_pb);
-            игроки.setMax(s.сервер.игроки_всего);
-            игроки.setProgress(s.сервер.игроки_на_сервере);
+            игроки.setMax(s.сервер.getигроки_всего());
+            игроки.setProgress(s.сервер.getигроки_на_сервере());
             TextView игроки1 = rootView.findViewById(R.id.res_players_title);
-            игроки1.setText(игроки1.getText().toString() + " (" + s.сервер.игроки_на_сервере + "/" + s.сервер.игроки_всего);
+            игроки1.setText(игроки1.getText().toString() + " (" + s.сервер.getигроки_на_сервере() + "/" + s.сервер.getигроки_всего());
             ProgressBar процессор = rootView.findViewById(R.id.res_cpu_pb);
             процессор.setMax(100);
-            процессор.setProgress(s.сервер.процессор_в_процентах);
+            процессор.setProgress(s.сервер.getпроцессор_в_процентах());
             TextView процессор1 = rootView.findViewById(R.id.res_cpu_title);
-            процессор1.setText(процессор1.getText().toString() + " (" + s.сервер.процессор_в_процентах + "%)");
-            ProgressBar озу = (ProgressBar) rootView.findViewById(R.id.res_ram_pb);
-            озу.setMax(s.сервер.озу_всего);
-            озу.setProgress(s.сервер.озу_использовано);
+            процессор1.setText(процессор1.getText().toString() + " (" + s.сервер.getпроцессор_в_процентах() + "%)");
+            ProgressBar озу = rootView.findViewById(R.id.res_ram_pb);
+            озу.setMax(s.сервер.getозу_всего());
+            озу.setProgress(s.сервер.getозу_использовано());
             TextView озу1 = rootView.findViewById(R.id.res_ram_title);
-            озу1.setText(озу1.getText().toString() + " (" + s.сервер.озу_в_процентах + "%)");
+            озу1.setText(озу1.getText().toString() + " (" + s.сервер.getозу_в_процентах() + "%)");
             ProgressBar диск = rootView.findViewById(R.id.res_disk_pb);
-            диск.setMax(s.сервер.диск_всего);
-            диск.setProgress(s.сервер.диск_использовано);
+            диск.setMax(s.сервер.getдиск_всего());
+            диск.setProgress(s.сервер.getдиск_использовано());
             TextView диск1 = rootView.findViewById(R.id.res_disk_title);
-            диск1.setText(диск1.getText().toString() + " (" + s.сервер.диск_в_процентах + "%)");
+            диск1.setText(диск1.getText().toString() + " (" + s.сервер.getдиск_в_процентах() + "%)");
 
             final ProgressBar ожидание_ответа_от_сервера = rootView.findViewById(R.id.res_pleaseWait);
 
@@ -329,7 +329,7 @@ public class ServerActivity extends ADsActivity {
             final Button перезагрузить = rootView.findViewById(R.id.res_reboot);
             final Button перезагрузить_плагины = rootView.findViewById(R.id.res_reload);
 
-            if (s.сервер.статус == 0) {
+            if (s.сервер.getстатус() == 0) {
                 включить.setVisibility(View.VISIBLE);
             } else {
                 включить.setVisibility(View.GONE);
@@ -354,7 +354,7 @@ public class ServerActivity extends ADsActivity {
                     перезагрузить_плагины.setVisibility(View.GONE);
                 }
             });
-            if (s.сервер.статус != 0) {
+            if (s.сервер.getстатус() != 0) {
                 выключить.setVisibility(View.VISIBLE);
             } else {
                 выключить.setVisibility(View.GONE);
@@ -379,7 +379,7 @@ public class ServerActivity extends ADsActivity {
                     перезагрузить_плагины.setVisibility(View.GONE);
                 }
             });
-            if (s.сервер.статус == 1) {
+            if (s.сервер.getстатус() == 1) {
                 перезагрузить.setVisibility(View.VISIBLE);
             } else {
                 перезагрузить.setVisibility(View.GONE);
@@ -403,7 +403,7 @@ public class ServerActivity extends ADsActivity {
                     перезагрузить_плагины.setVisibility(View.GONE);
                 }
             });
-            if ((s.сервер.статус == 1) && (!s.сервер.плагины.equals(""))) {
+            if ((s.сервер.getстатус() == 1) && (!s.сервер.getплагины().equals(""))) {
                 перезагрузить_плагины.setVisibility(View.VISIBLE);
             } else {
                 перезагрузить_плагины.setVisibility(View.GONE);
@@ -457,14 +457,14 @@ public class ServerActivity extends ADsActivity {
             день.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    s.сервер.выполнить_комманду(s.сервер.комманда_день);
+                    s.сервер.выполнить_комманду(s.сервер.getкомманда_день());
                 }
             });
             Button ночь = (Button) rootView.findViewById(R.id.world_timeNight);
             ночь.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    s.сервер.выполнить_комманду(s.сервер.комманда_ночь);
+                    s.сервер.выполнить_комманду(s.сервер.getкомманда_ночь());
                 }
             });
             final EditText время = rootView.findViewById(R.id.world_timeEditText);
@@ -473,14 +473,14 @@ public class ServerActivity extends ADsActivity {
             время_задать.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String комманда = s.сервер.комманда_задать_время.replace("%time%", время.getText().toString());
+                    String комманда = s.сервер.getкомманда_задать_время().replace("%time%", время.getText().toString());
                     s.сервер.выполнить_комманду(комманда);
                 }
             });
             время_добавить.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String комманда = s.сервер.комманда_добавить_время.replace("%time%", время.getText().toString());
+                    String комманда = s.сервер.getкомманда_добавить_время().replace("%time%", время.getText().toString());
                     s.сервер.выполнить_комманду(комманда);
                 }
             });
@@ -488,7 +488,7 @@ public class ServerActivity extends ADsActivity {
             погода_ясно.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String комманда = s.сервер.комманда_погода.replace("%weather%", "clear");
+                    String комманда = s.сервер.getкомманда_погода().replace("%weather%", "clear");
                     s.сервер.выполнить_комманду(комманда);
                 }
             });
@@ -496,7 +496,7 @@ public class ServerActivity extends ADsActivity {
             погода_дождь.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String комманда = s.сервер.комманда_погода.replace("%weather%", "rain");
+                    String комманда = s.сервер.getкомманда_погода().replace("%weather%", "rain");
                     s.сервер.выполнить_комманду(комманда);
                 }
             });
@@ -531,8 +531,8 @@ public class ServerActivity extends ADsActivity {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a ServerInfoFragment (defined as a static inner class below).
-            if (сервер.статус == 1) {
-                if (сервер.игроки_на_сервере > 0) {
+            if (сервер.getстатус() == 1) {
+                if (сервер.getигроки_на_сервере() > 0) {
                     switch(position) {
                         case 0:
                             return ServerInfoFragment.newInstance(position + 1);
@@ -567,8 +567,8 @@ public class ServerActivity extends ADsActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            if (сервер.статус == 1) {
-                if (сервер.игроки_на_сервере > 0)
+            if (сервер.getстатус() == 1) {
+                if (сервер.getигроки_на_сервере() > 0)
                     return 4;
                 else
                     return 3;
@@ -579,8 +579,8 @@ public class ServerActivity extends ADsActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            if (сервер.статус == 1) {
-                if (сервер.игроки_на_сервере > 0) {
+            if (сервер.getстатус() == 1) {
+                if (сервер.getигроки_на_сервере() > 0) {
                     switch (position) {
                         case 0:
                             return getString(R.string.serverActivity_info);

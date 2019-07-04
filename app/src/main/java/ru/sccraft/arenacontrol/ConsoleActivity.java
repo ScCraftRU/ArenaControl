@@ -31,9 +31,9 @@ public class ConsoleActivity extends ADsActivity {
         super.onCreate(savedInstanceState);
         настройки = PreferenceManager.getDefaultSharedPreferences(this);
         if (savedInstanceState == null) {
-            сервер = Server.fromJSON(getIntent().getStringExtra("server"));
+            сервер = Server.Companion.fromJSON(getIntent().getStringExtra("server"));
         } else {
-            сервер = Server.fromJSON(savedInstanceState.getString("server"));
+            сервер = Server.Companion.fromJSON(savedInstanceState.getString("server"));
         }
         setContentView(R.layout.activity_console);
         setTitle(R.string.title_activity_console);
@@ -42,7 +42,7 @@ public class ConsoleActivity extends ADsActivity {
         комманда = findViewById(R.id.console_cmd);
         ImageButton отправить = findViewById(R.id.console_send);
         консоль = findViewById(R.id.console_textView);
-        консоль.setText(сервер.консоль);
+        консоль.setText(сервер.getконсоль());
         прокрутить_до_конца();
         комманда.setOnKeyListener(new View.OnKeyListener() {
             @Override
@@ -53,7 +53,7 @@ public class ConsoleActivity extends ADsActivity {
                 return false;
             }
         });
-        if (сервер.статус != 0) {
+        if (сервер.getстатус() != 0) {
             комманда.setVisibility(View.VISIBLE);
             отправить.setVisibility(View.VISIBLE);
         } else {
@@ -164,8 +164,8 @@ public class ConsoleActivity extends ADsActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
             if (resultCode == 0) {
-                сервер = Server.fromJSON(data.getStringExtra("server"));
-                консоль.setText(сервер.консоль);
+                сервер = Server.Companion.fromJSON(data.getStringExtra("server"));
+                консоль.setText(сервер.getконсоль());
                 прокрутить_до_конца();
             }
         }
