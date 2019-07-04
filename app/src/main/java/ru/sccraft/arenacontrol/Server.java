@@ -25,7 +25,6 @@ import myarena.api.API_ответ;
 
 public class Server {
 
-    private static final String baseURL = "https://www.myarena.ru/api.php?";
     private static final String LOG_TAG = "Server";
     private String токен;
     int id;
