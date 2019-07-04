@@ -101,22 +101,22 @@ public class Server {
     }
 
     private void updateLocalServerData(API_info api_info) {
-        this.id = Integer.parseInt(api_info.server_id);
-        this.статус = api_info.online;
-        this.ip = api_info.server_address;
-        this.локация = api_info.server_location;
-        this.тип = api_info.server_type;
-        this.лимит_игроков = Integer.parseInt(api_info.server_maxslots);
-        if (!api_info.data.s.name.equals("")) this.имя_сервера = api_info.data.s.name;
-        this.дней_до_окончания_аренды = api_info.server_daystoblock;
-        this.игра = api_info.server_name;
-        this.игра_версия = api_info.data.e.version;
-        this.плагины = api_info.data.e.plugins;
+        this.id = Integer.parseInt(api_info.getServer_id());
+        this.статус = api_info.getOnline();
+        this.ip = api_info.getServer_address();
+        this.локация = api_info.getServer_location();
+        this.тип = api_info.getServer_type();
+        this.лимит_игроков = Integer.parseInt(api_info.getServer_maxslots());
+        if (!api_info.getData().getS().getName().equals("")) this.имя_сервера = api_info.getData().getS().getName();
+        this.дней_до_окончания_аренды = api_info.getServer_daystoblock();
+        this.игра = api_info.getServer_name();
+        this.игра_версия = api_info.getData().getE().getVersion();
+        this.плагины = api_info.getData().getE().getPlugins();
 
-        if (api_info.data.p == null) return;
-        игроки = new String[api_info.data.p.length];
+        if (api_info.getData().getP() == null) return;
+        игроки = new String[api_info.getData().getP().length];
         for (int i = 0; i < игроки.length; i++) {
-            игроки[i] = api_info.data.p[i].name;
+            игроки[i] = api_info.getData().getP()[i].getName();
         }
     }
 
