@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ADfree/ADfree.iml" filepath="$PROJECT_DIR$/ADfree/ADfree.iml" />
       <module fileurl="file://$PROJECT_DIR$/ArenaControl.iml" filepath="$PROJECT_DIR$/ArenaControl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ADfree/ArenaControl-ADfree.iml" filepath="$PROJECT_DIR$/ADfree/ArenaControl-ADfree.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/ArenaControl-app.iml" filepath="$PROJECT_DIR$/app/ArenaControl-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/StudioProjects-ArenaControl.iml" filepath="$PROJECT_DIR$/StudioProjects-ArenaControl.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
