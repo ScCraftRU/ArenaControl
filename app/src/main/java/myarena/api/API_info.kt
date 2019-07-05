@@ -55,6 +55,7 @@ class API_info : API_ответ() {
 
         inner class Player {
             var name = "Ulcnown" //Ник игрока на сервере
+            var score =  0 //Счёт игрока (Не для Minecraft)
         }
     }
 }
