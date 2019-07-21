@@ -3,19 +3,9 @@ package ru.sccraft.arenacontrol
 import android.annotation.SuppressLint
 import android.os.AsyncTask
 import android.util.Log
-
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-
-import java.io.UnsupportedEncodingException
-import java.net.URLEncoder
-
-import myarena.api.API_cmd
-import myarena.api.API_console
-import myarena.api.API_info
-import myarena.api.API_res
-import myarena.api.API_запрос
-import myarena.api.API_ответ
+import myarena.api.*
 
 /**
  * Создан пользователем alexandr 01.06.2017 11:56, работающем в комманде ScCraft.
@@ -132,23 +122,18 @@ class Server(private val токен: String) {
             var api_запрос = API_запрос("status", токен)
             var JSON = NetGet.getOneLine(api_запрос.toHTTPs())
             Log.i(LOG_TAG, "Ответ сервера MyArena: $JSON")
-            JSON = JSON.replace("\"e\":[]", "\"e\":{}")
-            var builder = GsonBuilder()
-            var gson = builder.create()
-            val api_info = gson.fromJson(JSON, API_info::class.java)
+            val api_info = API_info.fromJSON(JSON)
             updateLocalServerData(api_info)
             Log.i(LOG_TAG, "Основная информация обновлена!")
 
             api_запрос = API_запрос("getresources", токен)
             JSON = NetGet.getOneLine(api_запрос.toHTTPs())
             Log.i(LOG_TAG, "Ответ сервера MyArena: $JSON")
-            builder = GsonBuilder()
-            gson = builder.create()
-            val api_res = gson.fromJson(JSON, API_res::class.java)
+            val api_res = API_res.fromJSON(JSON)
             updateLocalServerRes(api_res)
             api_запрос = API_запрос("getconsole", токен)
             JSON = NetGet.getOneLine(api_запрос.toHTTPs())
-            val api_console = gson.fromJson(JSON, API_console::class.java)
+            val api_console = API_console.fromJSON(JSON)
             this.консоль = api_console.toString()
             return true
         } catch (e: Exception) {

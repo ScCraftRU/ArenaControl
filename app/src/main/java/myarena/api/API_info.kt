@@ -1,5 +1,7 @@
 package myarena.api
 
+import com.google.gson.GsonBuilder
+
 /**
  * Ответ на запрос querty=status&token=ВАШ_ТОКЕН
  * получение информации о сервере
@@ -56,6 +58,15 @@ class API_info : API_ответ() {
         inner class Player {
             var name = "Ulcnown" //Ник игрока на сервере
             var score =  0 //Счёт игрока (Не для Minecraft)
+        }
+    }
+
+    companion object {
+        fun fromJSON(JSON: String): API_info {
+            val json = JSON.replace("\"e\":[]", "\"e\":{}")
+            val builder = GsonBuilder()
+            val gson = builder.create()
+            return gson.fromJson(json, API_info::class.java)
         }
     }
 }
