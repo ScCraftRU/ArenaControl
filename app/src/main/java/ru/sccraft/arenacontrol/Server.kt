@@ -120,19 +120,19 @@ class Server(private val токен: String) {
     fun update(): Boolean {
         try {
             var api_запрос = API_запрос("status", токен)
-            var JSON = NetGet.getOneLine(api_запрос.toHTTPs())
+            var JSON = getOneLineHTTPs(api_запрос.toHTTPs())
             Log.i(LOG_TAG, "Ответ сервера MyArena: $JSON")
             val api_info = API_info.fromJSON(JSON)
             updateLocalServerData(api_info)
             Log.i(LOG_TAG, "Основная информация обновлена!")
 
             api_запрос = API_запрос("getresources", токен)
-            JSON = NetGet.getOneLine(api_запрос.toHTTPs())
+            JSON = getOneLineHTTPs(api_запрос.toHTTPs())
             Log.i(LOG_TAG, "Ответ сервера MyArena: $JSON")
             val api_res = API_res.fromJSON(JSON)
             updateLocalServerRes(api_res)
             api_запрос = API_запрос("getconsole", токен)
-            JSON = NetGet.getOneLine(api_запрос.toHTTPs())
+            JSON = getOneLineHTTPs(api_запрос.toHTTPs())
             val api_console = API_console.fromJSON(JSON)
             this.консоль = api_console.toString()
             return true
@@ -146,7 +146,7 @@ class Server(private val токен: String) {
     fun выполнить_комманду(комманда: String) {
         val t = Thread(Runnable {
             val api_cmd = API_cmd(комманда, токен)
-            NetGet.getOneLine(api_cmd.toHTTPs())
+            getOneLineHTTPs(api_cmd.toHTTPs())
         })
         t.start()
     }
@@ -160,7 +160,7 @@ class Server(private val токен: String) {
 
             override fun doInBackground(vararg voids: Void): Boolean? {
                 val api_запрос = API_запрос("start", токен)
-                val JSON = NetGet.getOneLine(api_запрос.toHTTPs())
+                val JSON = getOneLineHTTPs(api_запрос.toHTTPs())
 
                 val builder = GsonBuilder()
                 val gson = builder.create()
@@ -197,7 +197,7 @@ class Server(private val токен: String) {
 
             override fun doInBackground(vararg voids: Void): Boolean? {
                 val api_запрос = API_запрос("stop", токен)
-                val JSON = NetGet.getOneLine(api_запрос.toHTTPs())
+                val JSON = getOneLineHTTPs(api_запрос.toHTTPs())
 
                 val builder = GsonBuilder()
                 val gson = builder.create()
@@ -233,7 +233,7 @@ class Server(private val токен: String) {
 
             override fun doInBackground(vararg voids: Void): Boolean? {
                 val api_запрос = API_запрос("restart", токен)
-                val JSON = NetGet.getOneLine(api_запрос.toHTTPs())
+                val JSON = getOneLineHTTPs(api_запрос.toHTTPs())
 
                 val builder = GsonBuilder()
                 val gson = builder.create()
