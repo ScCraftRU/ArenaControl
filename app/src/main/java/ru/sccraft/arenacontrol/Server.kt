@@ -123,6 +123,8 @@ class Server(private val токен: String) {
             var JSON = getOneLineHTTPs(api_запрос.toHTTPs())
             Log.i(LOG_TAG, "Ответ сервера MyArena: $JSON")
             val api_info = API_info.fromJSON(JSON)
+            if (!api_info.успех())
+                return false
             updateLocalServerData(api_info)
             Log.i(LOG_TAG, "Основная информация обновлена!")
 
@@ -130,10 +132,14 @@ class Server(private val токен: String) {
             JSON = getOneLineHTTPs(api_запрос.toHTTPs())
             Log.i(LOG_TAG, "Ответ сервера MyArena: $JSON")
             val api_res = API_res.fromJSON(JSON)
+            if (!api_res.успех())
+                return false
             updateLocalServerRes(api_res)
             api_запрос = API_запрос("getconsole", токен)
             JSON = getOneLineHTTPs(api_запрос.toHTTPs())
             val api_console = API_console.fromJSON(JSON)
+            if (!api_console.успех())
+                return false
             this.консоль = api_console.toString()
             return true
         } catch (e: Exception) {
