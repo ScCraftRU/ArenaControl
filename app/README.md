@@ -1,4 +1,4 @@
-# App
+# app
 
 **EN:** Here is the source code of the ArenaControl Фтвкщшв application
 
