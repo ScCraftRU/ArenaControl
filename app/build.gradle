@@ -9,8 +9,8 @@ android {
         applicationId "ru.sccraft.arenacontrol"
         minSdkVersion 17
         targetSdkVersion 29
-        versionCode 68
-        versionName "1.5alpha1"
+        versionCode 69
+        versionName "1.5beta1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -36,7 +36,7 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.google.code.gson:gson:2.8.5'
-    implementation 'com.google.firebase:firebase-core:17.0.1'
+    implementation 'com.google.firebase:firebase-core:17.1.0'
     implementation 'com.google.firebase:firebase-ads:18.1.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     testImplementation 'junit:junit:4.12'
