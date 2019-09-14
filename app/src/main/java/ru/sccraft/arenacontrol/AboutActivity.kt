@@ -1,5 +1,6 @@
 package ru.sccraft.arenacontrol
 
+import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.ActivityNotFoundException
 import android.content.Intent
@@ -25,6 +26,7 @@ class AboutActivity : AppCompatActivity() {
     private var кликни_пять_раз_не_поворачивая_экран: Byte = 0
     private lateinit var toast: Toast
 
+    @SuppressLint("ShowToast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
