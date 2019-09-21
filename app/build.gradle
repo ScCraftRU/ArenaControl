@@ -12,6 +12,7 @@ android {
         versionCode 69
         versionName "1.5beta1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
