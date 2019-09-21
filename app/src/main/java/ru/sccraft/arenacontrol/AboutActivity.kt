@@ -17,7 +17,7 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
-class AboutActivity : AppCompatActivity() {
+class AboutActivity : AppCompatActivity(R.layout.activity_about) {
 
     internal var номер_сборки = 0 //VersionCode
     internal var название_версии = "" //VersionName
@@ -29,7 +29,6 @@ class AboutActivity : AppCompatActivity() {
     @SuppressLint("ShowToast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_about)
         setupActionBar()
         title = getString(R.string.about)
         toast = Toast.makeText(applicationContext, "", Toast.LENGTH_SHORT)
