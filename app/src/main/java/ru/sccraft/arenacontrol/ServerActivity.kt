@@ -25,6 +25,7 @@ import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.LinearLayout
 
 import com.google.android.gms.ads.AdView
 
@@ -282,6 +283,9 @@ class ServerActivity : ADsActivity() {
 
             val ожидание_ответа_от_сервера = rootView!!.findViewById<ProgressBar>(R.id.res_pleaseWait)
 
+            //Layout для скрытия ненужных индикаторов при выключенном сервере
+            val ЦП_ОЗУ_игроки = rootView!!.findViewById<LinearLayout>(R.id.res_starting_or_running)
+
             //Кнопки включения / выключения / перезагрузки сервера
             val включить = rootView!!.findViewById<Button>(R.id.res_start)
             val выключить = rootView!!.findViewById<Button>(R.id.res_stop)
@@ -290,6 +294,7 @@ class ServerActivity : ADsActivity() {
 
             if (s.сервер!!.статус.toInt() == 0) {
                 включить.visibility = View.VISIBLE
+                ЦП_ОЗУ_игроки.visibility = View.GONE
             } else {
                 включить.visibility = View.GONE
             }
@@ -310,6 +315,7 @@ class ServerActivity : ADsActivity() {
             }
             if (s.сервер!!.статус.toInt() != 0) {
                 выключить.visibility = View.VISIBLE
+                ЦП_ОЗУ_игроки.visibility = View.VISIBLE
             } else {
                 выключить.visibility = View.GONE
             }
