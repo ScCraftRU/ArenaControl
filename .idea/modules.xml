@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ADfree/ADfree.iml" filepath="$PROJECT_DIR$/ADfree/ADfree.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/ArenaControl.iml" filepath="$PROJECT_DIR$/.idea/ArenaControl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArenaControl.iml" filepath="$PROJECT_DIR$/ArenaControl.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
