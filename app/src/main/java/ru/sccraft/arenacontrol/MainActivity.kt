@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         file = fileList()
-        if (file.size == 0) {
+        if (file.size == 0 || (file.size == 1 && file[0].contains("PersistedInstallation"))) {
             //нет серверов
             setTitle(R.string.noServers)
             val ошибка = arrayOf(getString(R.string.noServers))
@@ -83,6 +83,7 @@ class MainActivity : AppCompatActivity() {
                 val pre = ArrayList<Server>()
                 for (файл in file) {
                     if (!файл.contains(".json")) continue
+                    if (файл.contains("PersistedInstallation")) continue
                     pre.add(Server.fromJSON(fe.getFile(файл)))
                 }
                 сервер = pre.toTypedArray()
