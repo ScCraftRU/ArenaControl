@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     internal lateinit var file: Array<String>
     internal lateinit var fe: Fe
     internal lateinit var lv: ListView
-    private var разрешить_использование_интендификатора = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,30 +36,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         run {
-            val рекламаID = fe.getFile("adid")
-            if (рекламаID.contains("1")) {
-                разрешить_использование_интендификатора = true
-            } else {
-                запросить_интендификатор()
-            }
         }
-    }
-
-    private fun запросить_интендификатор() {
-        val диалог = AlertDialog.Builder(this)
-        диалог.setTitle(R.string.intendificatorReqest)
-                .setMessage(R.string.intendificatorMessage)
-                .setCancelable(false)
-                .setPositiveButton(R.string.yes) { dialog, which ->
-                    fe.saveFile("adid", "1")
-                    разрешить_использование_интендификатора = true
-                }
-                .setNegativeButton(R.string.about) { dialog, which ->
-                    val intent = Intent(this@MainActivity, AboutActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-        диалог.show()
     }
 
     override fun onResume() {
@@ -101,14 +77,10 @@ class MainActivity : AppCompatActivity() {
             val адаптер = ServerAdapter(this, сервер)
             lv.adapter = адаптер
             lv.onItemClickListener = AdapterView.OnItemClickListener { parent, view, position, id ->
-                if (разрешить_использование_интендификатора) {
-                    val s = сервер[position]
-                    val intent = Intent(this@MainActivity, UpdateActivity::class.java)
-                    intent.putExtra("server", s.toJSON())
-                    startActivityForResult(intent, 1)
-                } else {
-                    запросить_интендификатор()
-                }
+                val s = сервер[position]
+                val intent = Intent(this@MainActivity, UpdateActivity::class.java)
+                intent.putExtra("server", s.toJSON())
+                startActivityForResult(intent, 1)
             }
             lv.onItemLongClickListener = AdapterView.OnItemLongClickListener { parent, view, position, id ->
                 val s = сервер[position].toJSON()
