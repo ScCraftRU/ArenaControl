@@ -56,38 +56,6 @@ class AboutActivity : AppCompatActivity(R.layout.activity_about) {
         actionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    fun rateAPP(view: View) {
-        showDialog(1)
-    }
-
-    override fun onCreateDialog(id: Int): Dialog {
-        val ad: AlertDialog.Builder
-        if (id == 1) {
-            val title = getString(R.string.rateApp)
-            val message = getString(R.string.goToGooglePlayQestion)
-            val button1String = getString(R.string.yes)
-            val button2String = getString(R.string.no)
-
-            ad = AlertDialog.Builder(this@AboutActivity)
-            ad.setTitle(title)  // заголовок
-            ad.setMessage(message) // сообщение
-            ad.setPositiveButton(button1String) { dialog, arg1 ->
-                try {
-                    val intent = Intent(Intent.ACTION_VIEW)
-                    intent.data = Uri.parse("market://details?id=$packageName")
-                    startActivity(intent)
-                } catch (e: ActivityNotFoundException) {
-                    e.printStackTrace()
-                }
-            }
-            ad.setNegativeButton(button2String) { dialog, arg1 -> }
-            ad.setCancelable(true)
-            ad.setOnCancelListener { }
-            return ad.create()
-        }
-        return super.onCreateDialog(id)
-    }
-
     private fun получить_лог_приложения(): String {
         try {
             val процесс = Runtime.getRuntime().exec("logcat -d")
