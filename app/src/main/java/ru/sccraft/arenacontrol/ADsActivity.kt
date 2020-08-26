@@ -16,13 +16,9 @@ open class ADsActivity : AppCompatActivity() {
     private lateinit var adView: AdView
     protected lateinit var fe: Fe
 
-    private fun показать_рекламу() {
-        adView.visibility = View.GONE
-    }
-
     protected fun задать_баннер(баннер: AdView) {
         this.adView = баннер
-        показать_рекламу()
+        adView.visibility = View.GONE
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
