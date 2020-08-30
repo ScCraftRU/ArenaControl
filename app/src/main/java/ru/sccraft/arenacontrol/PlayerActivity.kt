@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 
-import com.google.android.gms.ads.AdView
-
 class PlayerActivity : ADsActivity() {
 
     lateinit private var сервер: Server
     lateinit private var игрок: String
     lateinit private var сообщение: EditText
-    lateinit var adview: AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,8 +17,6 @@ class PlayerActivity : ADsActivity() {
         игрок = intent.getStringExtra("name")!!
         title = игрок
         сообщение = findViewById(R.id.player_message)
-        adview = findViewById(R.id.adView)
-        задать_баннер(adview)
     }
 
     fun kick(view: View) {
