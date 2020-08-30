@@ -1,1 +1,1 @@
-include ':app', ':ADfree'
+include ':app'
