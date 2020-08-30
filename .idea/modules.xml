@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ADfree/ADfree.iml" filepath="$PROJECT_DIR$/ADfree/ADfree.iml" group="ArenaControl/ADfree" />
       <module fileurl="file://$PROJECT_DIR$/ArenaControl.iml" filepath="$PROJECT_DIR$/ArenaControl.iml" group="ArenaControl" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="ArenaControl/app" />
     </modules>

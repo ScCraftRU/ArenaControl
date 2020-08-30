@@ -12,8 +12,6 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ScrollView
 import android.widget.TextView
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdView
 
 class ConsoleActivity : ADsActivity() {
 
@@ -52,38 +50,6 @@ class ConsoleActivity : ADsActivity() {
         } else {
             комманда.visibility = View.GONE
             отправить.visibility = View.GONE
-        }
-        val adView = findViewById<AdView>(R.id.adView)
-        задать_баннер(adView)
-        adView.adListener = object : AdListener() {
-            override fun onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
-                //Выполняется после прогрузки рекламы
-                прокрутить_до_конца()
-            }
-
-            override fun onAdFailedToLoad(errorCode: Int) {
-                // Code to be executed when an ad request fails.
-            }
-
-            override fun onAdOpened() {
-                // Code to be executed when an ad opens an overlay that
-                // covers the screen.
-            }
-
-            override fun onAdClicked() {
-                // Code to be executed when the user clicks on an ad.
-            }
-
-            override fun onAdLeftApplication() {
-                // Code to be executed when the user has left the app.
-            }
-
-            override fun onAdClosed() {
-                // Code to be executed when the user is about to return
-                // to the app after tapping on an ad.
-            }
-
         }
     }
 

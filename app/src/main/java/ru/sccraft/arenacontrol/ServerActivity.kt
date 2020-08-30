@@ -2,37 +2,22 @@ package ru.sccraft.arenacontrol
 
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
+import android.view.*
+import android.widget.*
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.widget.Toolbar
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.ProgressBar
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.LinearLayout
-
-import com.google.android.gms.ads.AdView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayout
 
 class ServerActivity : ADsActivity() {
 
     private var сервер: Server? = null
-    internal lateinit var adView: AdView
 
     /**
      * The [PagerAdapter] that will provide
@@ -58,12 +43,6 @@ class ServerActivity : ADsActivity() {
         }
         setContentView(R.layout.activity_server)
 
-        adView = findViewById(R.id.adView)
-        if (сервер!!.id != 0) {
-            задать_баннер(adView)
-        } else {
-            adView.visibility = View.GONE //Убираем рекламу при неправельном Token. (Запросы в AdMob при этом не отправляем)
-        }
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
         // Create the adapter that will return a fragment for each of the three
