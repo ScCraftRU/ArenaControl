@@ -114,13 +114,13 @@ class AboutActivity : AppCompatActivity(R.layout.activity_about) {
     }
 
     fun viewLicense(view: View) {
-        val ссылка_на_лицензию = Uri.parse("https://github.com/sashaqwert/ArenaControl/blob/master/LICENSE")
+        val ссылка_на_лицензию = Uri.parse("https://github.com/ScCraftRU/ArenaControl/blob/master/LICENSE")
         val открыть_лицензию_в_браузере = Intent(Intent.ACTION_VIEW, ссылка_на_лицензию)
         startActivity(открыть_лицензию_в_браузере)
     }
 
     fun viewSourceCode(view: View) {
-        val ссылка_на_исходный_код = Uri.parse("https://github.com/sashaqwert/ArenaControl")
+        val ссылка_на_исходный_код = Uri.parse("https://github.com/ScCraftRU/ArenaControl")
         val открыть_исходный_код_в_браузере = Intent(Intent.ACTION_VIEW, ссылка_на_исходный_код)
         startActivity(открыть_исходный_код_в_браузере)
     }
