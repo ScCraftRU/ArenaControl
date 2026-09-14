@@ -33,7 +33,7 @@ class AboutActivity : AppCompatActivity(R.layout.activity_about) {
         title = getString(R.string.about)
         toast = Toast.makeText(applicationContext, "", Toast.LENGTH_SHORT)
         try {
-            название_версии = packageManager.getPackageInfo(packageName, 0).versionName
+            название_версии = packageManager.getPackageInfo(packageName, 0).versionName!!
         } catch (e: PackageManager.NameNotFoundException) {
             e.printStackTrace()
         }
