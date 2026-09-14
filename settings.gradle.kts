@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ArenaControlGradleNew"
+rootProject.name = "ArenaControl"
 include(":app")
  
