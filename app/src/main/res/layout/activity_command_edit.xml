@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.sccraft.arenacontrol.CommandEditActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="ru.sccraft.arenacontrol.CommandEditActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -90,10 +91,10 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/newGameMode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/commandEditActivity_newOrOldGamemode"
-                android:id="@+id/newGameMode"/>
+                android:text="@string/commandEditActivity_newOrOldGamemode" />
 
             <TextView
                 android:layout_width="match_parent"

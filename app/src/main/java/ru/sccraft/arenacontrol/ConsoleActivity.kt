@@ -12,6 +12,9 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class ConsoleActivity : ADsActivity() {
 
@@ -29,7 +32,13 @@ class ConsoleActivity : ADsActivity() {
         } else {
             сервер = Server.fromJSON(savedInstanceState.getString("server")!!)
         }
+        enableEdgeToEdge()
         setContentView(R.layout.activity_console)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
         setTitle(R.string.title_activity_console)
 
         прокрутка = findViewById(R.id.console_scrollView)
